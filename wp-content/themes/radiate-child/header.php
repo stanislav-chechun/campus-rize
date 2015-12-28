@@ -49,7 +49,7 @@
 			</div><!-- .inner-wrap header-wrap -->
 		</header>
 
-		<div id="content" class="site-content">
+		<div id="content-campus" class="site-content">
 			<div id="navmobile" class="nav">
 				<?php wp_nav_menu( array( 'theme_location' => 'primary',
 												  'container_class' => 'nav navbar-nav navbar-right', 

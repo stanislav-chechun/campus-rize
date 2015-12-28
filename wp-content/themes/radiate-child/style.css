@@ -117,12 +117,12 @@ Version:        0.1.0
  .landing-page #banner h2 { color: #ffffff; font-size: 3.5em; margin: 0 auto .8em; }
  .landing-page #banner div.paragraph { font-size: 1.2em; margin: 0 auto 2.5em; }
  .landing-page #banner p { font-size: 1.2em; margin: 0 auto 2.5em; }
- .landing-page #banner .wsite-button, .splash-page #content .wsite-button { background: #ffffff !important; color: #000000 !important; }
- .landing-page #banner .wsite-button:hover, .splash-page #content .wsite-button:hover { background: #e5e5e5 !important; }
- .landing-page #banner .wsite-button:focus, .landing-page #banner .wsite-button:active, .splash-page #content .wsite-button:focus, .splash-page #content .wsite-button:active { background: #bbbbbb !important; }
+ .landing-page #banner .wsite-button, .splash-page #content-campus .wsite-button { background: #ffffff !important; color: #000000 !important; }
+ .landing-page #banner .wsite-button:hover, .splash-page #content-campus .wsite-button:hover { background: #e5e5e5 !important; }
+ .landing-page #banner .wsite-button:focus, .landing-page #banner .wsite-button:active, .splash-page #content-campus .wsite-button:focus, .splash-page #content-campus .wsite-button:active { background: #bbbbbb !important; }
  .landing-page #banner .wsite-button.wsite-button-highlight { background: #383838 !important; color: #ffffff !important; }
- .landing-page #banner .wsite-button.wsite-button-highlight:hover, .splash-page #content .wsite-button.wsite-button-highlight:hover { background: #626262 !important; }
- .landing-page #banner .wsite-button.wsite-button-highlight:focus, .landing-page #banner .wsite-button.wsite-button-highlight:active, .splash-page #content .wsite-button.wsite-button-highlight:focus, .splash-page #content .wsite-button.wsite-button-highlight:active { background: #000000 !important; }
+ .landing-page #banner .wsite-button.wsite-button-highlight:hover, .splash-page #content-campus .wsite-button.wsite-button-highlight:hover { background: #626262 !important; }
+ .landing-page #banner .wsite-button.wsite-button-highlight:focus, .landing-page #banner .wsite-button.wsite-button-highlight:active, .splash-page #content-campus .wsite-button.wsite-button-highlight:focus, .splash-page #content .wsite-button.wsite-button-highlight:active { background: #000000 !important; }
  .tall-header-page .wsite-background, .short-header-page .wsite-background { background: url(theme/images/tall-bg.jpg?1448511627) no-repeat center center; background-size: cover; }
  .tall-header-page #banner-wrap { height: 350px; }
  .tall-header-page #banner { width: 100%; }
@@ -149,7 +149,7 @@ Version:        0.1.0
  .splash-page #content-wrapper { display: table-row; text-align: center; box-sizing: border-box }
  .splash-page #content-vert { width: 100%; display: table-cell; vertical-align: middle; box-sizing: border-box }
  .splash-page #content-bg { display: block; vertical-align: middle; margin: 0 auto; max-width: 700px; padding: 1.4em; margin: 2.5em auto; box-sizing: border-box }
- .splash-page #content { padding: 3.5em 2.5em 7em; display: block; min-width: 300px; min-height: 150px; color: #ffffff; }
+ .splash-page #content-campus { padding: 3.5em 2.5em 7em; display: block; min-width: 300px; min-height: 150px; color: #ffffff; }
  .splash-page h2 { color: #ffffff; font-size: 3.5em; line-height: 1.2; margin: 0 auto .5em; }
  .splash-page .paragraph { font-size: 1.2em; }
  .splash-page #footer-wrap { display: none; }
@@ -267,7 +267,7 @@ Version:        0.1.0
  .tall-header-page #banner { padding: 75px 25px; }
  .splash-page #content-wrapper * { box-sizing: border-box; }
  .splash-page #content-bg { background: none; padding: 25px; }
- .splash-page #content { min-width: 0; padding: 5em .5em; }
+ .splash-page #content-campus { min-width: 0; padding: 5em .5em; }
  .splash-page h2, #banner h2 { font-size: 2em !important; }
  .title-page #banner h2 { padding-right: 0; }
  .title-page #banner div.paragraph { line-height: 1.25 !important; }
@@ -359,7 +359,7 @@ th, td {
     height: 650px;
 }
 
-#content {
+#content-campus {
     padding-top: 40px;
     background-color: #F3F3F3 !important;
     max-width: 1100px;
@@ -474,7 +474,7 @@ a#scroll-up span {
 	width: 100%;
 }
 
-#content {
+#content-campus {
 	overflow: hidden;
 }
 
@@ -781,7 +781,7 @@ span.wpcf7-not-valid-tip {
 	   margin-bottom: 100px;
 	}
 
-	#content {
+	#content-campus {
 		width: 96%;
 	}
 
@@ -852,7 +852,15 @@ input[type="submit"] {
 }
 
 /* Pavel*/
-div#post-content.content-wrap{
+div#container.give-wrap.container{
+    padding: 0;
+    width: 100%;
+}
+
+div#container.give-wrap.container div#content{
+    background-color: #FFFFFF;
+}
+/*div#post-content.content-wrap{
     margin: 0;
 }
 
@@ -905,5 +913,5 @@ article div#__utl-buttons-1{
     border-bottom-width: 1px;
     padding-bottom: 40px;
     margin-bottom: 20px;
-}
+}*/
 /* Pavel*/

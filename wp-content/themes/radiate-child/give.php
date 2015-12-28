@@ -12,10 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-get_header(); echo "FEFEFEFEFEF fefefef";
+get_header(); //echo "sssssNNNNNRR fefefef";
 $ss = get_post_meta(176);
 echo '<pre>';
-var_dump($ss);
+//var_dump($ss);
 echo '</pre>';
 /**
  * give_before_main_content hook
@@ -32,12 +32,13 @@ $form_content = get_post_meta(176, '_give_form_content');
 <article id="post-<?php the_ID(); ?>" <?php //post_class(); ?>>
     <div class="row">
         <div class="col-md-6" id="photo-text">
-            <iframe width="600" height="400" src="https://www.youtube.com/embed/RGcr9KG1m8I?rel=0" frameborder="0" rel="0" allowfullscreen></iframe>
+            <iframe width="500" height="400" src="https://www.youtube.com/embed/RGcr9KG1m8I?rel=0" frameborder="0" rel="0" allowfullscreen></iframe>
         </div>
         <div class="col-md-6" id="post-text">
 
-            <?php give_get_template_part( 'single-give-form/content', 'single-give-form' );?>
-
+            <?php// give_get_template_part( 'single-give-form/content', 'single-give-form' );?>
+<?php give_get_donation_form( $args = array() ); ?>
+            <?php echo give_get_users_completed_donations(); ?>
         </div>
         </div><!-- #div row-## --> 
 </article><!-- #post-## --> <?php
