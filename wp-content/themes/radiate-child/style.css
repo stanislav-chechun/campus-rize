@@ -860,6 +860,10 @@ div#container.give-wrap.container{
 div#container.give-wrap.container div#content{
     background-color: #FFFFFF;
 }
+
+article div.give-form-content-wrap{
+    display:none;
+}
 /*div#post-content.content-wrap{
     margin: 0;
 }
