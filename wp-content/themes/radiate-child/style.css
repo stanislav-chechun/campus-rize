@@ -110,7 +110,7 @@ Version:        0.1.0
  #banner h2 { letter-spacing: 2px; line-height: 1.2; }
  #banner a { color: #ffffff; }
  #banner .button-wrap { display: inline-block; }
- .landing-page .wsite-background { background: url(/wp-content/uploads/2015/12/1721959360.jpg) no-repeat center center; background-size: cover; }
+ .landing-page .wsite-background { /*background: url(/wp-content/uploads/2015/12/1721959360.jpg) no-repeat center center;*/ background-size: cover; }
  .landing-page #banner-wrap { height: 550px; }
  .landing-page #banner { color: #ffffff; }
  .landing-page #banner { text-align: center; }
@@ -408,7 +408,7 @@ a#scroll-up span {
 
 #stage-one {
 	font-size: x-large;
-	padding-top: 50px;
+	padding-top: 60px;
 	padding-bottom: 50px;
 }
 
@@ -416,6 +416,7 @@ a#scroll-up span {
 	list-style: disc;
 	padding-left: 30px;
 	margin-bottom: 1.6em;
+	color: #2a2a2a;
 }
 
 #stage-one li {
@@ -702,6 +703,14 @@ span.wpcf7-not-valid-tip {
 	padding-bottom: 30px;
 }
 
+#banner a {
+	display: inline-block;
+}
+
+#stage-one p {
+	font-size: 1em;
+}
+
 @media(min-width: 768px) {
 
 	#bs-example-navbar-collapse-1 {
@@ -874,5 +883,27 @@ article header.post-header h2.post-title{
     line-height: normal;
     padding: 0;
     text-align: left;
+}
+
+article div#post-sum {
+    width: 100%;
+    min-height: 40px;
+    border-color: rgba(107, 107, 108, 0.3);
+    border-style: solid;
+    border-bottom-width: 1px;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    line-height: 1;
+    font-family: 'Lato', Arial, sans-serif;
+    font-weight: 400;
+}
+
+article div#__utl-buttons-1{
+    min-height: 40px;
+    border-color: rgba(107, 107, 108, 0.3);
+    border-style: solid;
+    border-bottom-width: 1px;
+    padding-bottom: 40px;
+    margin-bottom: 20px;
 }
 /* Pavel*/

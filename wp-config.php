@@ -23,13 +23,13 @@
 define('DB_NAME', 'primatec_campus');
 
 /** MySQL database username */
-define('DB_USER', 'primatec_campus');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'uuwe35hg');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
-define('DB_HOST', 'primatec.mysql.ukraine.com.ua');
+define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');

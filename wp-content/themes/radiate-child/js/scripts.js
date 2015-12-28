@@ -36,14 +36,6 @@ jQuery( document ).ready(function() {
 	    	jQuery(".posts-stages").height('auto');
 	    }
 
-	    var maxPostHeight = 0;
-		jQuery(".posts-height").each(function(){
-			if ( jQuery(this).height() > maxPostHeight ) {
-				maxPostHeight = jQuery(this).height();
-			}
-		});
-		jQuery(".posts-height").height(maxPostHeight);
-
 	});
 
 	jQuery(".wpcf7-list-item input").wrap( "<label></label>" ).after("<span></span>");
