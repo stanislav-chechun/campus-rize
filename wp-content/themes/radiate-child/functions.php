@@ -13,41 +13,35 @@
         //Pavel
         //Meta box for needed money
         
-add_action('add_meta_boxes', 'need_money', 1);
+add_action('add_meta_boxes', 'video_yt__donations', 1);
 
-function need_money() {
-    add_meta_box( 'sum_money', 'The required amount of money', 'need_money_box_func', 'post', 'normal', 'high'  );
+function video_yt__donations() {
+    add_meta_box( 'give-video', 'Video presentation', 'need_video_box_func', 'give_forms', 'side', 'low'  );
 }
 
 // the code for the block
-function need_money_box_func( $post ){
-    // 5 - id of the category Donate
-    //Следует обдумать добавление боксов для определенной категории
-    $arr_cat = $post->post_category;
-    if( in_array(5, $arr_cat)){
-        
+function need_video_box_func( $post ){
         ?>
-	<p><label><input type="text" name="money[sum]" value="<?php echo get_post_meta($post->ID, 'sum', 1); ?>" style="width:20%" /> <?php echo _('Sum, $'); ?></label></p>
-
-	<input type="hidden" name="sum_fields_nonce" value="<?php echo wp_create_nonce(__FILE__); ?>" />
+	<p><label>https://www.youtube.com/watch?v=<input type="text" name="video[youtube]" value="<?php echo get_post_meta($post->ID, 'youtube', 1); ?>" style="width:40%" /> <?php echo _('Youtube'); ?></label></p>
+        <p><label><input type="text" name="video[vimeo]" value="<?php echo get_post_meta($post->ID, 'vimeo', 1); ?>" style="width:40%" /> <?php echo _('Vimeo'); ?></label></p>
+	<input type="hidden" name="video_fields_nonce" value="<?php echo wp_create_nonce(__FILE__); ?>" />
 	<?php
-    }
 }
 
-add_action('save_post', 'money_sum_update', 0);
+add_action('save_post', 'give_video_update', 0);
 
 /* Save data */
-function money_sum_update( $post_id ){
-	if ( !wp_verify_nonce($_POST['sum_fields_nonce'], __FILE__) ) return false; // checking
+function give_video_update( $post_id ){
+	if ( !wp_verify_nonce($_POST['video_fields_nonce'], __FILE__) ) return false; // checking
 	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE  ) return false; // autochecking
 	if ( !current_user_can('edit_post', $post_id) ) return false; // checking user role
 
-	if( !isset($_POST['money']) ) return false; 
-        if(! is_numeric($_POST['money']['sum'])) return false;
+	//if( !isset($_POST['video']) ) return false; 
+        //if(! is_numeric($_POST['money']['sum'])) return false;
 
 	// save
-	$_POST['extra'] = array_map('trim', $_POST['money']);
-	foreach( $_POST['money'] as $key=>$value ){
+	$_POST['video'] = array_map('trim', $_POST['video']);
+	foreach( $_POST['video'] as $key=>$value ){
 		if( empty($value) ){
 			delete_post_meta($post_id, $key); // if field is empty
 			continue;
