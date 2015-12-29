@@ -29,10 +29,15 @@ $amount_goal  = get_post_meta( $form_id, '_give_set_goal', true );
 $amount_have = get_post_meta( $form_id, '_give_form_earnings', true );
 $width_bar = floor(($amount_have/$amount_goal)*100);
 $number_donations = give_get_form_sales_stats( $form_id);
+$give_vimeo = get_post_meta($post->ID, 'vimeo', 1);
+$give_youtube = get_post_meta($post->ID, 'youtube', 1);
 ?>
 <article id="post-<?php the_ID(); ?>">
     <div class="row">
         <div class="col-md-6" id="photo-text">
+            <?php 
+            
+            ?>
             <iframe width="500" height="400" src="https://www.youtube.com/embed/RGcr9KG1m8I?rel=0" frameborder="0" rel="0" allowfullscreen></iframe>
         </div>
         <div class="col-md-6" id="post-text">
