@@ -864,32 +864,18 @@ div#container.give-wrap.container div#content{
 article div.give-form-content-wrap{
     display:none;
 }
-/*div#post-content.content-wrap{
-    margin: 0;
+
+div#container div#content{
+    padding:0;
 }
 
-div#post-content.content-wrap article {
-    padding-top: 50px;
-}
-
-article div#post-text{
-    padding-left: 0%;
-}
-
-article div#photo-text{
-    padding: 0 5% 0 2%;
-}
-
-article div#post-text p{
-    line-height: 1.5;
-    text-align: left;
-}
-
-article header.post-header h2.post-title{
-    margin: 0 auto 1.5em !important;
-    font-size: 1.15em;
+div#container div#content article{
     font-family: 'Montserrat', Arial, sans-serif;
-    color: #000000;
+    padding: 30px 20px 30px 20px;
+}
+
+div#container div#content article h2{
+    font-size: 26px;
     text-transform: uppercase;
     font-weight: bold;
     line-height: normal;
@@ -897,25 +883,61 @@ article header.post-header h2.post-title{
     text-align: left;
 }
 
-article div#post-sum {
-    width: 100%;
-    min-height: 40px;
-    border-color: rgba(107, 107, 108, 0.3);
-    border-style: solid;
-    border-bottom-width: 1px;
-    margin-bottom: 30px;
-    font-size: 1.1em;
-    line-height: 1;
-    font-family: 'Lato', Arial, sans-serif;
-    font-weight: 400;
+div#container div#content article div.raised{
+    font-size: 36px;
+    line-height: 48px;
+    letter-spacing: -1px;
+    color: #333;
 }
 
-article div#__utl-buttons-1{
-    min-height: 40px;
-    border-color: rgba(107, 107, 108, 0.3);
-    border-style: solid;
-    border-bottom-width: 1px;
-    padding-bottom: 40px;
-    margin-bottom: 20px;
-}*/
+div#container div#content article div.raised span.income, span.goal-text{
+    font-size: 36px;
+    line-height: 48px;
+    letter-spacing: -1px;
+    color: #333;
+}
+
+div#container div#content article form.give-form div.give-donation-amount span.give-currency-symbol{
+    background-color: rgba(4, 121, 51, 0.75);
+    border-top: 1px solid rgba(4, 121, 51, 0.75);
+    border-bottom: 1px solid rgba(4, 121, 51, 0.75);
+    color: #E1FFF5;
+    font-size: 16px;
+}
+
+div#container div#content article form.give-form ul#give-donation-level-button-wrap li button.give-btn{
+    background: rgba(4, 121, 51, 0.75);
+    border: 1px solid rgba(4, 121, 51, 0.75);
+}
+
+div#container div#content article form.give-form button.give-btn-reveal{
+    background-color: crimson;
+    width: 200px;
+    height: 50px;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+div#container div#content article div.row div#text-content{
+    padding: 30px 20px 30px 20px;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+div#container div#content article div.text-explain p{
+    font-size: 15px;
+    font-family: 'Montserrat', Arial, sans-serif;
+    text-align: justify;
+}
+
+div#container div#content article div.row div#post-text {
+    display: table;
+    min-height: 400px;
+}
+
+div#container div#content article div.row div#post-text div#parent-form{
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0;
+    margin-bottom: 0;
+}
 /* Pavel*/
