@@ -39,16 +39,20 @@ $content = wpautop( get_post_meta( $form_id, '_give_form_content', true ) );
         <div class="col-md-6" id="post-text">
             <div id="parent-form">
                 <h2><?php the_title(); ?></h2>
-
+                <?php 
+                    $amount_goal  = get_post_meta( $form_id, '_give_set_goal', true );
+                    $amount_have = get_post_meta( $form_id, '_give_form_earnings', true );
+                    $width_bar = floor(($amount_have/$amount_goal)*100);
+                ?>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" id="form-progress" aria-valuenow="<?php echo $width_bar; ?>" 
+                        aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $width_bar; ?>%">
+                        <?php echo $width_bar; ?>%
+                    </div>
+                </div>
                 <?php// give_get_template_part( 'single-give-form/content', 'single-give-form' );?>
                 <?php give_get_donation_form( $args = array() ); ?>
-                <?php ?>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" 
-                       aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                    60%
-                  </div>
-                </div>
+                
             </div>
         </div>
         </div><!-- #div row-## --> 
