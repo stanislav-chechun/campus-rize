@@ -13,11 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header();
-$form_id = 176;
-$ss = get_post_meta($form_id);
-echo '<pre>';
-//var_dump($ss);
-echo '</pre>';
+//$form_id = 176;
 /**
  * give_before_main_content hook
  *
@@ -27,11 +23,14 @@ do_action( 'give_before_main_content' );
 
 while ( have_posts() ) : the_post();
 
-	//give_get_template_part( 'single-give-form/content', 'single-give-form' );
-//$form_content = get_post_meta($id_form, '_give_form_content');
+$form_id = get_the_ID();
 $content = wpautop( get_post_meta( $form_id, '_give_form_content', true ) );
-//echo $form_content['0']; ?>
-<article id="post-<?php the_ID(); ?>" <?php //post_class(); ?>>
+$amount_goal  = get_post_meta( $form_id, '_give_set_goal', true );
+$amount_have = get_post_meta( $form_id, '_give_form_earnings', true );
+$width_bar = floor(($amount_have/$amount_goal)*100);
+$number_donations = give_get_form_sales_stats( $form_id);
+?>
+<article id="post-<?php the_ID(); ?>">
     <div class="row">
         <div class="col-md-6" id="photo-text">
             <iframe width="500" height="400" src="https://www.youtube.com/embed/RGcr9KG1m8I?rel=0" frameborder="0" rel="0" allowfullscreen></iframe>
@@ -39,11 +38,9 @@ $content = wpautop( get_post_meta( $form_id, '_give_form_content', true ) );
         <div class="col-md-6" id="post-text">
             <div id="parent-form">
                 <h2><?php the_title(); ?></h2>
-                <?php 
-                    $amount_goal  = get_post_meta( $form_id, '_give_set_goal', true );
-                    $amount_have = get_post_meta( $form_id, '_give_form_earnings', true );
-                    $width_bar = floor(($amount_have/$amount_goal)*100);
-                ?>
+                <div id="number-donations">
+                    <?php echo $number_donations, ' ', 'backers'; ?>
+                </div>
                 <div class="progress">
                     <div class="progress-bar progress-bar-success" role="progressbar" id="form-progress" aria-valuenow="<?php echo $width_bar; ?>" 
                         aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $width_bar; ?>%">
