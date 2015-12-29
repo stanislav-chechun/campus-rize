@@ -37,17 +37,19 @@ $content = wpautop( get_post_meta( $form_id, '_give_form_content', true ) );
             <iframe width="500" height="400" src="https://www.youtube.com/embed/RGcr9KG1m8I?rel=0" frameborder="0" rel="0" allowfullscreen></iframe>
         </div>
         <div class="col-md-6" id="post-text">
-            <h2><?php the_title(); ?></h2>
+            <div id="parent-form">
+                <h2><?php the_title(); ?></h2>
 
-            <?php// give_get_template_part( 'single-give-form/content', 'single-give-form' );?>
-            <?php give_get_donation_form( $args = array() ); ?>
-            <?php give_get_d ?>
+                <?php// give_get_template_part( 'single-give-form/content', 'single-give-form' );?>
+                <?php give_get_donation_form( $args = array() ); ?>
+                <?php ?>
+            </div>
         </div>
         </div><!-- #div row-## --> 
         
         <div class="row">
             <div class="col-md-12" id="text-content">
-               <div id="give-form-content-<?php echo $form_id ?>"><?php echo $content; ?> </div>
+               <div id="give-form-content-<?php echo $form_id ?>" class="text-explain"><?php echo $content; ?> </div>
             </div>
         </div>
 </article><!-- #post-## --> <?php
