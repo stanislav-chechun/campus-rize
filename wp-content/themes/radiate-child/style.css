@@ -881,6 +881,7 @@ div#container div#content article h2{
     line-height: normal;
     padding: 0;
     text-align: center;
+    margin-bottom: 3px;
 }
 
 div#container div#content article div.raised{
@@ -912,7 +913,7 @@ div#container div#content article form.give-form ul#give-donation-level-button-w
 
 div#container div#content article form.give-form ul#give-donation-level-button-wrap{
     display: inline-block;
-    margin-bottom: 0;
+    margin-bottom: 5px;
 }
 
 div#container div#content article form.give-form button.give-btn-reveal{
@@ -939,7 +940,8 @@ div#container div#content article div.text-explain p{
 
 div#container div#content article div.row div#post-text {
     display: table;
-    min-height: 400px;
+    min-height: 344px;
+    
 }
 
 div#container div#content article div.row div#post-text div#parent-form{
@@ -962,12 +964,13 @@ div#container div#content article div.row div#parent-form div.give-total-wrap di
 }
 
 div#container div#content article div.row div#parent-form div#number-donations{
-    font-size: 26px;
+    font-size: 20px;
     text-transform: uppercase;
     line-height: normal;
     padding: 0;
     text-align: center;
-    margin-bottom: 26px;
+    margin-bottom: 10px;
+    margin-top:9px;
 }
 
 div#container div#content article form[id*=give-form] #give-final-total-wrap .give-donation-total-label{
