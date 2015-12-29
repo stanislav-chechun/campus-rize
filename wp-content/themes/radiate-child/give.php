@@ -31,14 +31,26 @@ $width_bar = floor(($amount_have/$amount_goal)*100);
 $number_donations = give_get_form_sales_stats( $form_id);
 $give_vimeo = get_post_meta($post->ID, 'vimeo', 1);
 $give_youtube = get_post_meta($post->ID, 'youtube', 1);
+$give_thumbnail = 'ee';
+$some_video = 'RGcr9KG1m8I';
 ?>
 <article id="post-<?php the_ID(); ?>">
     <div class="row">
         <div class="col-md-6" id="photo-text">
             <?php 
-            
+            if ( $give_youtube !== ''){
             ?>
-            <iframe width="500" height="400" src="https://www.youtube.com/embed/RGcr9KG1m8I?rel=0" frameborder="0" rel="0" allowfullscreen></iframe>
+                <iframe width="515" height="344" src="https://www.youtube.com/embed/<?php echo $give_youtube; ?>?rel=0" frameborder="0" rel="0" allowfullscreen></iframe>
+            <?php } 
+            elseif ( $give_vimeo !== '') {
+            ?>
+                <iframe src="https://player.vimeo.com/video/<?php echo $give_vimeo; ?>?color=fff700&byline=0&portrait=0&badge=0" width="515" height="344" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <?php } 
+            elseif ( $give_youtube == '' && $give_vimeo == '' && $give_thumbnail !== '') {
+                if(has_post_thumbnail()): 
+                    the_post_thumbnail();  
+                endif;
+            }?>
         </div>
         <div class="col-md-6" id="post-text">
             <div id="parent-form">
