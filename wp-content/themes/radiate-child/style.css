@@ -960,4 +960,24 @@ div#container div#content article div.row div#parent-form div.give-form-wrap.giv
 div#container div#content article div.row div#parent-form div.give-total-wrap div.give-donation-amount.form-row-wide{
     display:inline-block;
 }
+
+div#container div#content article div.row div#parent-form div#number-donations{
+    font-size: 26px;
+    text-transform: uppercase;
+    line-height: normal;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 26px;
+}
+
+div#container div#content article form[id*=give-form] #give-final-total-wrap .give-donation-total-label{
+   background-color: rgba(4, 121, 51, 0.75); 
+   color: #FFFFFF;
+   font-family: 'Montserrat', Arial, sans-serif;
+}
+
+div#container div#content article div.give-submit-button-wrap input#give-purchase-button{
+    background-color: crimson;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
 /* Pavel*/
