@@ -999,4 +999,12 @@ div#container div#content article div#photo-text iframe{
         height: 244px;
     }
 }
+
+div#container div#content article div#social ul.horizontal li{
+	margin-right: 8px !important;
+}
+
+div#container div#content article div.progress{
+	border-radius: 25px;
+}
 /* Pavel*/
