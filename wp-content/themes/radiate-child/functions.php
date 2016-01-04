@@ -54,4 +54,16 @@ function give_video_update( $post_id ){
         
         //Pavel
 
+
+		//Anjela
+
+	$result = add_role( 'student', __(
+		'Student' ),
+		array( 
+			'edit_posts' => true, // Allows user to edit their own posts
+			'create_posts' => true,
+			'upload_files' => true,
+		) );
+
+
 ?>
