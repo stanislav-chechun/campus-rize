@@ -17,7 +17,13 @@ get_header(); ?>
 			$user_image_from_profile = wp_get_attachment_image( $user_meta['photo_37'][0], 'medium' );
 			$user_video_from_profile = wp_get_attachment_url($user_meta['video_42'][0] );
 
-			//if (isset($user_video_from_profile)){
+	?>
+
+	<div class="for-media">
+
+	<?php
+
+			//if (isset($user_video_from_profile)){ 
 			if ($user_video_from_profile != ''){
 
 	?>
@@ -33,7 +39,13 @@ get_header(); ?>
 			}
 			else{
 				echo get_avatar($id_user);
-			}	 			 
+			}
+
+	?>
+
+	</div>
+
+	<?php	 			 
 
 			echo '<h2>' . $user_info->first_name .' '. $user_info->last_name . '</h2>'; 
 			echo '<p>' . $user_info->description . '</p>';			
