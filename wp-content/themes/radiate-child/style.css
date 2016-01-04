@@ -983,4 +983,20 @@ div#container div#content article div.give-submit-button-wrap input#give-purchas
     background-color: crimson;
     font-family: 'Montserrat', Arial, sans-serif;
 }
+
+div#container div#content article div#photo-text{
+        text-align: center;
+}
+
+div#container div#content article div#photo-text iframe{
+    width: 515px;
+    height: 344px;
+}
+
+@media (max-width: 700px){
+    div#container div#content article div#photo-text iframe {
+        width: 415px;
+        height: 244px;
+    }
+}
 /* Pavel*/
