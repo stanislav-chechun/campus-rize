@@ -1008,3 +1008,15 @@ div#container div#content article div.progress{
 	border-radius: 25px;
 }
 /* Pavel*/
+/* Anjela (new changes)*/
+
+.student-profile h2{
+	display: inline-block;
+}
+
+.student-profile div.for-media {
+	float: left;
+	margin: 0 30px 30px 0;
+}
+
+/* end new changes */
