@@ -88,7 +88,7 @@ $give_youtube = get_post_meta($post->ID, 'youtube', 1);
         <div class="row">
             <div class="col-md-12" id="text-content">
                <div id="give-form-content-<?php echo $form_id ?>" class="text-explain"><?php echo $content; ?> </div>
-               <div id="social"><?php if(shortcode_exists('uptolike')){ echo do_shortcode("[uptolike]"); }?></div>
+               <div id="social"><?php if( shortcode_exists('uptolike') ){ echo do_shortcode("[uptolike]"); }?></div>
             </div>
         </div>
 </article><!-- #post-## --> <?php
