@@ -13,6 +13,7 @@
         //Pavel
         //Meta box for needed money
         
+        
 add_action('add_meta_boxes', 'video_yt__donations', 1);
 
 function video_yt__donations() {
