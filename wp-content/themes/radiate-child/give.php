@@ -31,19 +31,32 @@ $width_bar = floor(($amount_have/$amount_goal)*100);
 $number_donations = give_get_form_sales_stats( $form_id);
 $give_vimeo = get_post_meta($post->ID, 'vimeo', 1);
 $give_youtube = get_post_meta($post->ID, 'youtube', 1);
-$some_image = 'sss';
+
 ?>
 <article id="post-<?php the_ID(); ?>">
     <div class="row">
-        <div class="col-md-6" id="photo-text">
+        <div class="col-md-6 col-xs-12" id="photo-text">
             <?php 
             if ( $give_youtube !== ''){
-            ?>
-                <iframe width="515" height="344" src="https://www.youtube.com/embed/<?php echo $give_youtube; ?>?rel=0" frameborder="0" rel="0" allowfullscreen></iframe>
-            <?php } 
+                //Check if video exist
+                $headers = get_headers('https://www.youtube.com/oembed?format=json&url=http://www.youtube.com/watch?v=' . $give_youtube);
+                //echo '<pre>'; var_dump($headers); echo '</pre>';
+                if(is_array($headers) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$headers[0]) : false){
+                ?>    <iframe src="https://www.youtube.com/embed/<?php echo $give_youtube; ?>?rel=0" frameborder="0" rel="0" allowfullscreen></iframe>
+                <?php } else {
+                    ?> <h2>Sorry, but video-id is invalid on youtube.com</h2>
+                    <image src="<?php echo get_stylesheet_directory_uri(); ?>/images/student.jpg">
+                <?php }
+            } 
             elseif ( $give_vimeo !== '') {
-            ?>
-                <iframe src="https://player.vimeo.com/video/<?php echo $give_vimeo; ?>?color=fff700&byline=0&portrait=0&badge=0" width="515" height="344" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                $headers = get_headers('http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/' . $give_vimeo);
+                if(is_array($headers) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$headers[0]) : false){
+                ?>    <iframe src="https://player.vimeo.com/video/<?php echo $give_vimeo; ?>?color=fff700&byline=0&portrait=0&badge=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <?php } else {
+                    ?> <h2>Sorry, but video-id is invalid on vimeo.com</h2>
+                    <image src="<?php echo get_stylesheet_directory_uri(); ?>/images/student.jpg">
+                <?php }?>
+                    
             <?php } 
             elseif ( $give_youtube == '' && $give_vimeo == '' && has_post_thumbnail()) {
                 
@@ -53,7 +66,7 @@ $some_image = 'sss';
                <image src="<?php echo get_stylesheet_directory_uri(); ?>/images/student.jpg">
             <?php }?>
         </div>
-        <div class="col-md-6" id="post-text">
+        <div class="col-md-6 col-xs-12" id="post-text">
             <div id="parent-form">
                 <h2><?php the_title(); ?></h2>
                 <div id="number-donations">
