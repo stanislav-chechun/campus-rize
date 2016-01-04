@@ -4,7 +4,7 @@ Template Name: Student Profile
 */
 get_header(); ?>
 
-<div class="content-wrap text-page">
+<div class="content-wrap text-page student-profile">
 		
 	<?php 
 		
