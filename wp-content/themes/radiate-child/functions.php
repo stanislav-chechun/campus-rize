@@ -23,7 +23,7 @@ function video_yt__donations() {
 function need_video_box_func( $post ){
         ?>
 	<p><label>https://www.youtube.com/watch?v=<input type="text" name="video[youtube]" value="<?php echo get_post_meta($post->ID, 'youtube', 1); ?>" style="width:40%" /> <?php echo _('Youtube'); ?></label></p>
-        <p><label><input type="text" name="video[vimeo]" value="<?php echo get_post_meta($post->ID, 'vimeo', 1); ?>" style="width:40%" /> <?php echo _('Vimeo'); ?></label></p>
+        <p><label>https://player.vimeo.com/video/<input type="text" name="video[vimeo]" value="<?php echo get_post_meta($post->ID, 'vimeo', 1); ?>" style="width:40%" /> <?php echo _('Vimeo'); ?></label></p>
 	<input type="hidden" name="video_fields_nonce" value="<?php echo wp_create_nonce(__FILE__); ?>" />
 	<?php
 }
@@ -51,7 +51,8 @@ function give_video_update( $post_id ){
 	}
 	return $post_id;
 }
-        
+
+    
         //Pavel
 
 
