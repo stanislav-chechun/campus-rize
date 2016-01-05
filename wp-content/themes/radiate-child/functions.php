@@ -68,4 +68,51 @@ function give_video_update( $post_id ){
 		) );
 
 
+	add_action('add_meta_boxes', 'donation_form_autor', 1);
+
+	function donation_form_autor() {
+		add_meta_box( 'autor_field', 'Autor', 'donation_autor_box_showup', 'give_forms', 'side', 'low'  );
+	}
+
+	function donation_autor_box_showup( $post ) { 
+	?>
+		<form action="" method="post">
+
+			<p>Name<br />
+				<input type="text" name="autor_name" value="<?php echo get_post_meta($post->ID, 'autor_name', 1); ?>" />
+			</p>
+
+			<p>Surname<br />
+				<input type="text" name="autor_surname" value="<?php echo get_post_meta($post->ID, 'autor_surname', 1); ?>" />
+			</p>
+			
+		</form>
+	<?php
+	}
+
+	add_action('save_post', 'donation_autor_save'); 
+
+	function donation_autor_save($postID) { 
+
+		if (!isset($_POST['autor_name'])
+			&& !isset($_POST['autor_surname'])) 
+		return; 
+
+		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) 
+		return; 
+
+		if (wp_is_post_revision($postID)) 
+		return; 
+
+		// correction data
+		$autor_name    = sanitize_text_field($_POST['autor_name']);
+		$autor_surname = sanitize_text_field($_POST['autor_surname']);
+
+		// records
+		update_post_meta($postID, 'autor_name', $autor_name);
+		update_post_meta($postID, 'autor_surname', $autor_surname);
+
+	} 
+	 
+
 ?>
