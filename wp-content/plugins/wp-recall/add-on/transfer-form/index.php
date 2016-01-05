@@ -5,7 +5,29 @@ function add_tab_transfer_funds(){
     rcl_tab('transfer_funds','form_recall_block','Transfer of funds',array('public'=>0,'class'=>'fa-envelope','order'=>20));
 }
 function form_recall_block($user_lk){
-    ?>
+    
+    $user_data = get_userdata($user_lk);
+    $user_login = $user_data->user_login;
+    $args = array(
+	'post_type' => 'give_forms',
+	'meta_key' => 'autor_login',
+        'meta_value' => $user_login,
+    );
+    
+    $query = new WP_Query( $args );
+    ?> <table class="table table-hover">
+        <th>The aim</th><th>Donates</th><th>The goal</th><th>substraction</th> <?php
+    while ( $query->have_posts() ) {
+	$query->the_post();
+        $form_id = get_the_ID();
+        $amount_goal  = get_post_meta( $form_id, '_give_set_goal', true );
+        $amount_have = get_post_meta( $form_id, '_give_form_earnings', true );
+        $substraction = $amount_have - $amount_goal;
+
+	the_title(); // выведем заголовок поста
+}
+            ?>
+    </table>
     <h3>You can transfer the money available to the goals that are made</h3>
     <form  class="form-inline" id="transfer_form" method="post">
         <div class="form-group">
