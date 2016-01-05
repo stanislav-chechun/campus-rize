@@ -91,5 +91,7 @@ jQuery( document ).ready(function() {
 		});
 			
  	});
+	
+	jQuery("#carousel-wishes div.item:first-child").addClass("active");
 
 });
