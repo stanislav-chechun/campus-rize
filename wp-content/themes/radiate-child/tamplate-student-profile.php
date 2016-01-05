@@ -61,19 +61,36 @@ get_header(); ?>
 	?>
 
 			<div class="row">
+				<div id="carousel-wishes" class="carousel slide" data-ride="carousel">					  
+					<div class="carousel-inner" role="listbox">
+					    
 
 	<?php			
-				while ( $posts->have_posts() ) {
-					$posts->the_post();
+						while ( $posts->have_posts() ) {
+							$posts->the_post();
 	?>
+					
+							<div class="item">			      
+						    	<?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+						    	<div class="carousel-caption">
+						        	<?php the_title(); ?>
+						    	</div>
+						    </div>
+					    
 
-					<div>
-						<h2 class="wsite-content-title"><?php the_title(); ?></h2>
-						<?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>				
+	<?php }	?>					    
+					    
 					</div>
-
-	<?php }	?>
-
+					  
+					<a class="left carousel-control" href="#carousel-wishes" role="button" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#carousel-wishes" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					</a>
+				</div>
 			</div>
 
 	<?php			
