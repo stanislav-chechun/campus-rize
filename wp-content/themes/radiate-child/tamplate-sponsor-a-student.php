@@ -7,6 +7,7 @@ get_header(); ?>
 <div class="content-wrap donate">
 		
 	<?php
+
 		$parametrs = array(
 		    'role' => 'Student'
 		);
@@ -19,85 +20,80 @@ get_header(); ?>
 			<div class="row">
 
 	<?php
-		    foreach ($user_query->results as $user) :
-		        /*print get_avatar($user->ID);
-		        print '<p><a href="' . home_url() . "/author/{$user->user_nicename}\">{$user->display_name}</a></p>";
-		        $description = get_user_meta($user->ID, 'description', true);
-		        print "<p>Немного о себе: {$description}</p>";*/
-		        
-		        /*$author_info = get_userdata($author->ID);
-        		echo '<p>'.$author_info->first_name.' '.$author_info->last_name.'</p>';*/        		
+		    	foreach ($user_query->results as $user) :		                		
 
 	?>
 
-				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 posts-height">
+					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 posts-height">
+						<div class="donation-item">	
 
-				<div class="donation-item">	
-
-					<?php
-
-						echo get_avatar($user->ID);
-						$id_user = $user->ID;
-						echo '<h2><a href="' . get_home_url() . '/student-profile?id_user=' . $id_user .'">' . $user->first_name .' '. $user->last_name . '</a></h2>'; 
-						echo '<p>' . $user->description . '</p>';
-						/*$a = get_metadata('user', $user->ID);
-						echo "<pre>";
-						var_dump($a); 
-						echo "</pre>";*/
-						//echo '<li>' . get_post_meta( $query->post->ID, 'director', true ). '</li>';
-						//echo '<p>' . $user->photo . '</p>';
-
-					
-
-					?> 
-
-					<!--<div class="donation-progress">				
-					
-						<?php 
-
-							$post_id = get_the_ID();
-							$goal = get_post_meta($post_id, '_give_set_goal');
-							$content = get_post_meta($post_id, '_give_form_content');
-							$earnings = get_post_meta($post_id, '_give_form_earnings');
-							$progress = $earnings[0]/$goal[0]*100;	
-
-							echo $content[0];
-
-						?>
-
-						<div class="progress">
-						  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $progress; ?>" aria-valuemin="0" aria-valuemax="100" style="<?php echo 'width: ' . $progress . '%;'; ?>">
-						    <span class="sr-only"><?php echo $progress . "%"; ?> Complete</span>
-						  </div>
-						</div>
-
-						<div class="progress-description">
-							<p>
-								<span><?php echo $progress . "%"; ?></span>	funded
-							</p>
-							<p>
-								<span><?php echo "$" . $goal[0]; ?></span> pledged
-							</p>
-						</div>						
-
-					</div>-->
-
-				</div>
-
-			</div>
 	<?php
 
-		    endforeach;
-		endif;
-	?>
+							echo get_avatar($user->ID);							
+							echo '<h2><a href="' . get_home_url() . '/student-profile?id_user=' . $user->ID .'">' . $user->first_name .' '. $user->last_name . '</a></h2>'; 
+							echo '<p>' . $user->description . '</p>';							
 
+							$args = array(
+								'post_type' => 'give_forms', 
+								'meta_key' => 'autor_login', 
+								'meta_value' => $user->user_login,
+							);
+
+							$posts = new WP_Query( $args );
+
+							if ( $posts->have_posts() ) {
+
+								$goal_sum = 0;												
+								$earnings_sum = 0;			
+								
+								while ( $posts->have_posts() ) {
+
+									$posts->the_post();
+						
+									$post_id = get_the_ID();
+									$goal = get_post_meta($post_id, '_give_set_goal');												
+									$earnings = get_post_meta($post_id, '_give_form_earnings');
+												
+									$goal_sum += $goal[0];
+									$earnings_sum += $earnings[0];
+
+								}
+
+								$progress_sum = $earnings_sum/$goal_sum*100;	
+
+	?>					    
+										    
+							<div class="progress">
+								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $progress_sum; ?>" aria-valuemin="0" aria-valuemax="100" style="<?php echo 'width: ' . $progress_sum . '%;'; ?>">
+									<span class="sr-only"><?php echo $progress_sum . "%"; ?> Complete</span>
+								</div>
+							</div>
+							<div class="progress-description">
+								<p>
+									<span><?php echo $progress_sum . "%"; ?></span>	funded
+								</p>
+								<p>
+									<span><?php echo "$" . $goal_sum; ?></span> pledged
+								</p>
+							</div>
+										    			
+
+	<?php			
+							} 
+							wp_reset_postdata();	
+	?>						
+
+						</div>
+					</div>
+	<?php
+		    	endforeach;
+	?>
+			
 			</div>
 
-	<!--<?php /*$v=get_user_meta(2); 
-	echo "<pre>";
-	var_dump($v); 
-	echo "</pre>";*/
-	?>-->
+	<?php
+		endif;
+	?>	
 
 </div>
 
