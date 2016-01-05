@@ -6,7 +6,7 @@ get_header(); ?>
 
 <div class="content-wrap donate">
 		
-	<?php
+<?php
 
 		$parametrs = array(
 		    'role' => 'Student'
@@ -15,19 +15,19 @@ get_header(); ?>
 		$user_query = new WP_User_Query($parametrs);
 		 
 		if (empty($user_query->results) == FALSE) : 
-	?>
+?>
 			
 			<div class="row">
 
-	<?php
+<?php
 		    	foreach ($user_query->results as $user) :		                		
 
-	?>
+?>
 
 					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 posts-height">
 						<div class="donation-item">	
 
-	<?php
+<?php
 
 							echo get_avatar($user->ID);							
 							echo '<h2><a href="' . get_home_url() . '/student-profile?id_user=' . $user->ID .'">' . $user->first_name .' '. $user->last_name . '</a></h2>'; 
@@ -61,7 +61,7 @@ get_header(); ?>
 
 								$progress_sum = $earnings_sum/$goal_sum*100;	
 
-	?>					    
+?>					    
 										    
 							<div class="progress">
 								<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $progress_sum; ?>" aria-valuemin="0" aria-valuemax="100" style="<?php echo 'width: ' . $progress_sum . '%;'; ?>">
@@ -78,22 +78,22 @@ get_header(); ?>
 							</div>
 										    			
 
-	<?php			
+<?php			
 							} 
 							wp_reset_postdata();	
-	?>						
+?>						
 
 						</div>
 					</div>
-	<?php
+<?php
 		    	endforeach;
-	?>
+?>
 			
 			</div>
 
-	<?php
+<?php
 		endif;
-	?>	
+?>	
 
 </div>
 
