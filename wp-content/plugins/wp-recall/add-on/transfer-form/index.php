@@ -71,7 +71,7 @@ add_action('init', 'kp_process_transfer');
 function kp_process_transfer() {
 
 	if( isset( $_POST['aims'] ) && $_POST['kp_transfer'] == 'process_kp_transfer' ) {
-echo 'DODODODOD';
+
 //            if( ! wp_verify_nonce( $_POST['au_nonce'], 'au_nonce' ) ) {
 //                return;
 //            }
@@ -91,10 +91,16 @@ echo 'DODODODOD';
 //       update_user_meta( $user->ID, 'rcp_status', $status );
 //        
 //    }
-   
-//    wp_redirect( admin_url( '/options-general.php?page=activate_users.php&au-message=users-activated' ) ); exit;
+       
+        $location = get_bloginfo('url') . '/account/?user=1&tab=transfer_funds&kp-message=transfer_completed';
+        wp_redirect( $location ); exit;
         }
  }
+ 
+ add_action('init','add_notify_update_profile');
+function add_notify_update_profile(){    
+    if (isset($_GET['kp-message'])) rcl_notice_text('Transfer complete','success');
+}
 
 function add_tab_transfer_form_rcl($array_tabs){
 	//transfer_funds - идентификатор вкладки дополнения
