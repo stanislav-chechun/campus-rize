@@ -16,15 +16,25 @@ function form_recall_block($user_lk){
     
     $query = new WP_Query( $args );
     ?> <table class="table table-hover">
-        <th>The aim</th><th>Donates</th><th>The goal</th><th>substraction</th> <?php
+        <th>The aim</th><th>Donates</th><th>The goal</th><th>Substraction</th> <?php
     while ( $query->have_posts() ) {
 	$query->the_post();
         $form_id = get_the_ID();
         $amount_goal  = get_post_meta( $form_id, '_give_set_goal', true );
         $amount_have = get_post_meta( $form_id, '_give_form_earnings', true );
         $substraction = $amount_have - $amount_goal;
-
-	the_title(); // выведем заголовок поста
+        $aims[] .= get_the_title();
+        
+        echo '<tr><td>' . get_the_title() . '<td>';
+        echo '<td>' . $amount_have . '<td>';
+        echo '<td>' . $amount_goal . '<td>';
+        if( $substraction > 0 ){
+            echo '<td class="success">' . $substraction . '<td>';
+            $sum_transfer += $substraction;
+        } else{
+            echo '<td class="danger>' . $substraction . '<td>';
+        }
+        echo '</tr>';
 }
             ?>
     </table>
