@@ -78,7 +78,7 @@ get_header(); ?>
 
 	<?php			
 		} 
-		wp_reset_postdata(); 	
+		wp_reset_postdata();	
 	?>	
 
 </div>
