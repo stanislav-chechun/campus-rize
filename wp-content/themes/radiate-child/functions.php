@@ -78,12 +78,16 @@ function give_video_update( $post_id ){
 	?>
 		<form action="" method="post">
 
-			<p>Name<br />
+			<!--<p>Name<br />
 				<input type="text" name="autor_name" value="<?php echo get_post_meta($post->ID, 'autor_name', 1); ?>" />
 			</p>
 
 			<p>Surname<br />
 				<input type="text" name="autor_surname" value="<?php echo get_post_meta($post->ID, 'autor_surname', 1); ?>" />
+			</p>-->
+
+			<p>Login<br />
+				<input type="text" name="autor_login" value="<?php echo get_post_meta($post->ID, 'autor_login', 1); ?>" />
 			</p>
 			
 		</form>
@@ -94,8 +98,9 @@ function give_video_update( $post_id ){
 
 	function donation_autor_save($postID) { 
 
-		if (!isset($_POST['autor_name'])
-			&& !isset($_POST['autor_surname'])) 
+		/*if (!isset($_POST['autor_name'])
+			&& !isset($_POST['autor_surname'])) */
+		if (!isset($_POST['autor_login']))
 		return; 
 
 		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) 
@@ -105,12 +110,14 @@ function give_video_update( $post_id ){
 		return; 
 
 		// correction data
-		$autor_name    = sanitize_text_field($_POST['autor_name']);
-		$autor_surname = sanitize_text_field($_POST['autor_surname']);
+		/*$autor_name    = sanitize_text_field($_POST['autor_name']);
+		$autor_surname = sanitize_text_field($_POST['autor_surname']);*/
+		$autor_login    = sanitize_text_field($_POST['autor_login']);
 
 		// records
-		update_post_meta($postID, 'autor_name', $autor_name);
-		update_post_meta($postID, 'autor_surname', $autor_surname);
+		/*update_post_meta($postID, 'autor_name', $autor_name);
+		update_post_meta($postID, 'autor_surname', $autor_surname);*/
+		update_post_meta($postID, 'autor_login', $autor_login);
 
 	} 
 	 
