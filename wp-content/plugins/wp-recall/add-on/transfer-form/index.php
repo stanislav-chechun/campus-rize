@@ -11,12 +11,12 @@ function form_recall_block($user_lk){
     $args = array(
 	'post_type' => 'give_forms',
 	'meta_key' => 'autor_login',
-        'meta_value' => $user_login,
+    'meta_value' => $user_login
     );
     
     $query = new WP_Query( $args );
     ?> <table class="table table-hover">
-        <th>The aim</th><th>Donates</th><th>The goal</th><th>Substraction</th> <?php
+        <thead><th>The aim</th><th>Donates</th><th>The goal</th><th>Substraction</th></thead> <?php
     while ( $query->have_posts() ) {
 	$query->the_post();
         $form_id = get_the_ID();
@@ -25,28 +25,28 @@ function form_recall_block($user_lk){
         $substraction = $amount_have - $amount_goal;
         $aims[] .= get_the_title();
         
-        echo '<tr><td>' . get_the_title() . '<td>';
-        echo '<td>' . $amount_have . '<td>';
-        echo '<td>' . $amount_goal . '<td>';
+        echo '<tr><td>' . get_the_title() . '</td>';
+        echo '<td>' . $amount_have . '</td>';
+        echo '<td>' . $amount_goal . '</td>';
         if( $substraction > 0 ){
-            echo '<td class="success">' . $substraction . '<td>';
+            echo '<td class="success">' . $substraction . '</td>';
             $sum_transfer += $substraction;
         } else{
-            echo '<td class="danger>' . $substraction . '<td>';
+            echo '<td class="danger">' . $substraction . '</td>';
         }
         echo '</tr>';
 }
             ?>
     </table>
-    <h3>You can transfer the money available to the goals that are made</h3>
+    <h3>You can transfer the money available to the goals that are made: $<?php echo $sum_transfer; ?>.</h3>
     <form  class="form-inline" id="transfer_form" method="post">
         <div class="form-group">
-            <label for="aims"> <?php  __( 'Choose your aim: '); ?> </label>
-            <select name="give_form" required>
-                <option id="aims" value="Чебурашка">Чебурашка</option>
-                <option value="Крокодил Гена">Крокодил Гена</option>
-                <option value="Шапокляк">Шапокляк</option>
-                <option value="Крыса Лариса">Крыса Лариса</option>
+            <label for="aims"> <?php echo  __( 'Choose your aim: '); ?></label>
+            <select id="aims"  name="aims" required>
+                <?php foreach( $aims as $aim){
+                        echo '<option value="' . $aim . '">' . $aim . '</option>';
+                } ?>
+				             
             </select>
         </div>
         
@@ -65,6 +65,36 @@ function form_recall_block($user_lk){
     </form>
     <?php 
 }
+
+add_action('init', 'kp_process_transfer');
+
+function kp_process_transfer() {
+
+	if( isset( $_POST['aims'] ) && $_POST['kp_transfer'] == 'process_kp_transfer' ) {
+echo 'DODODODOD';
+//            if( ! wp_verify_nonce( $_POST['au_nonce'], 'au_nonce' ) ) {
+//                return;
+//            }
+//            if( ! $_POST['au_expiration'] || strlen( trim( $_POST['au_expiration'] ) ) <= 0 ) {
+//		//wp_die( __('Please select the expiration date for users.', 'rcp_csvui' ), __('Error') );
+//                wp_redirect( admin_url( '/options-general.php?page=activate_users.php&au-message=users-error-activated' ) ); exit;
+//		}
+          
+             //My testing // $user_id = 524;
+//        $expiration = isset( $_POST['au_expiration'] ) ? sanitize_text_field( $_POST['au_expiration'] ) : false;
+//        $status = 'active';
+//        $subscription_id = '2';
+//        $signup_method = 'live';
+//
+//   $all_users = au_get_all_users();
+//    foreach ($all_users as $user) {
+//       update_user_meta( $user->ID, 'rcp_status', $status );
+//        
+//    }
+   
+//    wp_redirect( admin_url( '/options-general.php?page=activate_users.php&au-message=users-activated' ) ); exit;
+        }
+ }
 
 function add_tab_transfer_form_rcl($array_tabs){
 	//transfer_funds - идентификатор вкладки дополнения
