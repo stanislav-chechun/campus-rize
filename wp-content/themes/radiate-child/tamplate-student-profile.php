@@ -75,11 +75,10 @@ get_header(); ?>
 	<?php }	?>
 
 			</div>
-			
+
 	<?php			
 		} 
 		wp_reset_postdata(); 	
-	
 	?>	
 
 </div>
