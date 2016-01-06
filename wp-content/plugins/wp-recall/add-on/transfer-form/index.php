@@ -17,74 +17,81 @@ function form_recall_block($user_lk){
     );
     
     $query = new WP_Query( $args );
-     
-    $html .= 
-            '<table class="table table-hover">
-                <thead><th>The aim</th><th>Donates</th><th>The goal</th><th>Substraction</th></thead>'; 
-    while ( $query->have_posts() ) {
-	$query->the_post();
-        $form_id = get_the_ID();
-        $amount_goal  = get_post_meta( $form_id, '_give_set_goal', true );
-        $amount_have = get_post_meta( $form_id, '_give_form_earnings', true );
-        $substraction = $amount_have - $amount_goal;
-       // $aims[] .= get_the_title();
-        
-    $html .= '<tr><td><a href="' . get_permalink() . '">' . get_the_title() . '</a></td>';
-    $html .= '<td>' . $amount_have . '</td>';
-    $html .= '<td>' . $amount_goal . '</td>';
-        if( $substraction > 0 ){
-            $html .=  '<td class="success">' . $substraction . '</td>';
-            $sum_transfer += $substraction;
-            //Create array for select. Bigger zero
-            $aims_from[$form_id][] .= get_the_title();
-            $aims_from[$form_id][] .= $amount_have;
-            $aims_from[$form_id][] .= $substraction;
-            $aims_from[$form_id][] .= $form_id;
-        } else{
-            $html .=  '<td class="danger">' . $substraction . '</td>';
-            //Create array for select. Below zero
-            $aims_to[$form_id][] .= get_the_title();
-            $aims_to[$form_id][] .= $amount_have;
-            $aims_to[$form_id][] .= $substraction;
-            $aims_to[$form_id][] .= $form_id;
-        }
-        $html .=  '</tr>';
-    }
-                $html .= '</table>';  
-    $html .= '<h3>You can transfer the money available to the goals that are made: $' . $sum_transfer . '</h3>';
-    $html .= '<form  class="form-inline" id="transfer_form" method="post">';
-        $html .= '<div class="form-group">';
-        $html .= '<label for="aims_from">' . __( 'Transfer money from: ') . '</label>';
-                $html .= '<select id="aims_from"  name="aims_from" required>';
-                        foreach( $aims_from as $aim){
-                            $html .=  '<option value="' . $aim[3] . '">' . $aim[0] . '</option>';
-                        } 	             
-                $html .= '</select>';
-        $html .= '</div>';
-        
-        $html .= '<div class="form-group">';
-        $html .= '<label for="aims_to">' . __( 'Transfer money to: ') . '</label>';
-                $html .= '<select id="aims_to"  name="aims_to" required>';
-                        foreach( $aims_to as $aim){
-                            $html .=  '<option value="' . $aim[3] . '">' . $aim[0] . '</option>';
-                        } 	             
-                $html .= '</select>';
-        $html .= '</div>';
-        
-        $html .= '<div class="form-group">';
-            $html .= '<div class="input-group">';
-            $html .= '<label class="sr-only"  for="money">' .  __( 'Enter the amount: ') . '</label>';
-            $html .= '<div class="input-group-addon">$</div>';
-            $html .= '<input name="money" class="form-control"  id="money" placeholder="Amount" type="text" value=""/>';
-            $html .= '</div>';
-        $html .= '</div>';
-        
-        $html .= '<input type="hidden" name="kp_transfer" value="process_kp_transfer"/>';
-        $html .=  wp_nonce_field('kp_nonce', 'kp_nonce');
-        $html .= '<p><input class="btn btn-default" type="submit" value="Transfer">';
-        $html .= '<input class="btn btn-default" type="reset" value="Reset"></p>';
-    $html .= '</form>'; 
     
+    if( $query->have_posts() ){
+        $html .= 
+                '<table class="table table-hover">
+                    <thead><th>The aim</th><th>Donates</th><th>The goal</th><th>Substraction</th></thead>'; 
+        while ( $query->have_posts() ) {
+            $query->the_post();
+            $form_id = get_the_ID();
+            $amount_goal  = get_post_meta( $form_id, '_give_set_goal', true );
+            $amount_have = get_post_meta( $form_id, '_give_form_earnings', true );
+            $substraction = $amount_have - $amount_goal;
+           
+            $html .= '<tr><td><a href="' . get_permalink() . '">' . get_the_title() . '</a></td>';
+            $html .= '<td>' . $amount_have . '</td>';
+            $html .= '<td>' . $amount_goal . '</td>';
+                if( $substraction > 0 ){
+                    $html .=  '<td class="success">' . $substraction . '</td>';
+                    $sum_transfer += $substraction;
+                    //Create array for select. Bigger zero
+                    $aims_from[$form_id][] .= get_the_title();
+                    $aims_from[$form_id][] .= $amount_have;
+                    $aims_from[$form_id][] .= $substraction;
+                    $aims_from[$form_id][] .= $form_id;
+                } else{
+                    $html .=  '<td class="danger">' . $substraction . '</td>';
+                    //Create array for select. Below zero
+                    $aims_to[$form_id][] .= get_the_title();
+                    $aims_to[$form_id][] .= $amount_have;
+                    $aims_to[$form_id][] .= $substraction;
+                    $aims_to[$form_id][] .= $form_id;
+                }
+                $html .=  '</tr>';
+        }
+
+                    $html .= '</table>';  
+        $html .= '<h3>You can transfer the money available to the goals that are made: $' . $sum_transfer . '</h3>';
+        $html .= '<form  class="form-inline" id="transfer_form" method="post">';
+            $html .= '<div class="form-group">';
+            $html .= '<label for="aims_from">' . __( 'Transfer money from: ') . '</label>';
+                    $html .= '<select id="aims_from"  name="aims_from" required>';
+                            foreach( $aims_from as $aim){
+                                $html .=  '<option value="' . $aim[3] . '">' . $aim[0] . '</option>';
+                            } 	             
+                    $html .= '</select>';
+            $html .= '</div>';
+
+            $html .= '<div class="form-group">';
+            $html .= '<label for="aims_to">' . __( 'Transfer money to: ') . '</label>';
+                    $html .= '<select id="aims_to"  name="aims_to" required>';
+                            foreach( $aims_to as $aim){
+                                $html .=  '<option value="' . $aim[3] . '">' . $aim[0] . '</option>';
+                            } 	             
+                    $html .= '</select>';
+            $html .= '</div>';
+
+            $html .= '<div class="form-group">';
+                $html .= '<div class="input-group">';
+                $html .= '<label class="sr-only"  for="money">' .  __( 'Enter the amount: ') . '</label>';
+                $html .= '<div class="input-group-addon">$</div>';
+                $html .= '<input name="money" class="form-control"  id="money" placeholder="Amount" type="text" value=""/>';
+                $html .= '</div>';
+            $html .= '</div>';
+
+            $html .= '<input type="hidden" name="kp_transfer" value="process_kp_transfer"/>';
+            $html .=  wp_nonce_field('kp_nonce', 'kp_nonce');
+            $html .= '<p><input class="btn btn-default" type="submit" value="Transfer">';
+            $html .= '<input class="btn btn-default" type="reset" value="Reset"></p>';
+        $html .= '</form>'; 
+    } else{
+        $html .= '<div class="center-block">';
+            $html .= '<p class="bg-warning">';
+                $html .= 'Sorry, you have no one donations forms! Start with us!';
+            $html .= '</p>';
+        $html .= '</div>';
+    }    
     return $html;
 }
 
