@@ -2,8 +2,10 @@
 //Create new tab for tranfer money
 add_action('init','add_tab_transfer_funds');
 function add_tab_transfer_funds(){
-    rcl_tab('transfer_funds','form_recall_block','Transfer of funds',array('public'=>0,'class'=>'fa-envelope','order'=>20));
+    rcl_tab('transfer_funds','form_recall_block','Transfer of funds',array('public'=>0,'class'=>'fa-usd','order'=>20));
 }
+//class - http://fontawesome.io/icons/
+
 function form_recall_block($user_lk){
     
     $user_data = get_userdata($user_lk);
@@ -11,12 +13,14 @@ function form_recall_block($user_lk){
     $args = array(
 	'post_type' => 'give_forms',
 	'meta_key' => 'autor_login',
-    'meta_value' => $user_login
+        'meta_value' => $user_login
     );
     
     $query = new WP_Query( $args );
-    ?> <table class="table table-hover">
-        <thead><th>The aim</th><th>Donates</th><th>The goal</th><th>Substraction</th></thead> <?php
+     
+    $html .= 
+            '<table class="table table-hover">
+                <thead><th>The aim</th><th>Donates</th><th>The goal</th><th>Substraction</th></thead>'; 
     while ( $query->have_posts() ) {
 	$query->the_post();
         $form_id = get_the_ID();
@@ -25,45 +29,45 @@ function form_recall_block($user_lk){
         $substraction = $amount_have - $amount_goal;
         $aims[] .= get_the_title();
         
-        echo '<tr><td>' . get_the_title() . '</td>';
-        echo '<td>' . $amount_have . '</td>';
-        echo '<td>' . $amount_goal . '</td>';
+    $html .= '<tr><td><a href="' . get_permalink() . '">' . get_the_title() . '</a></td>';
+    $html .= '<td>' . $amount_have . '</td>';
+    $html .= '<td>' . $amount_goal . '</td>';
         if( $substraction > 0 ){
-            echo '<td class="success">' . $substraction . '</td>';
+            $html .=  '<td class="success">' . $substraction . '</td>';
             $sum_transfer += $substraction;
         } else{
-            echo '<td class="danger">' . $substraction . '</td>';
+            $html .=  '<td class="danger">' . $substraction . '</td>';
         }
-        echo '</tr>';
+        $html .=  '</tr>';
 }
-            ?>
-    </table>
-    <h3>You can transfer the money available to the goals that are made: $<?php echo $sum_transfer; ?>.</h3>
-    <form  class="form-inline" id="transfer_form" method="post">
-        <div class="form-group">
-            <label for="aims"> <?php echo  __( 'Choose your aim: '); ?></label>
-            <select id="aims"  name="aims" required>
-                <?php foreach( $aims as $aim){
-                        echo '<option value="' . $aim . '">' . $aim . '</option>';
-                } ?>
-				             
-            </select>
-        </div>
+            
+    $html .= '</table>';
+    $html .= '<h3>You can transfer the money available to the goals that are made: $' . $sum_transfer . '</h3>';
+    $html .= '<form  class="form-inline" id="transfer_form" method="post">';
+    $html .= '<div class="form-group">';
+    $html .= '<label for="aims">' . __( 'Choose your aim: ') . '</label>';
+            $html .= '<select id="aims"  name="aims" required>';
+                    foreach( $aims as $aim){
+                        $html .=  '<option value="' . $aim . '">' . $aim . '</option>';
+                    } 	             
+            $html .= '</select>';
+        $html .= '</div>';
         
-        <div class="form-group">
-            <div class="input-group">
-            <label class="sr-only"  for="money"><?php __( 'Enter the amount: '); ?> </label>
-            <div class="input-group-addon">$</div>
-            <input name="money" class="form-control"  id="money" placeholder="Amount" type="text" value=""/>
-            </div>
-        </div>
+        $html .= '<div class="form-group">';
+            $html .= '<div class="input-group">';
+            $html .= '<label class="sr-only"  for="money">' .  __( 'Enter the amount: ') . '</label>';
+            $html .= '<div class="input-group-addon">$</div>';
+            $html .= '<input name="money" class="form-control"  id="money" placeholder="Amount" type="text" value=""/>';
+            $html .= '</div>';
+        $html .= '</div>';
         
-        <input type="hidden" name="kp_transfer" value="process_kp_transfer"/>
-        <?php wp_nonce_field('kp_nonce', 'kp_nonce'); ?>
-        <p><input class="btn btn-default" type="submit" value="Transfer">
-        <input class="btn btn-default" type="reset" value="Reset"></p>
-    </form>
-    <?php 
+        $html .= '<input type="hidden" name="kp_transfer" value="process_kp_transfer"/>';
+        $html .=  wp_nonce_field('kp_nonce', 'kp_nonce');
+        $html .= '<p><input class="btn btn-default" type="submit" value="Transfer">';
+        $html .= '<input class="btn btn-default" type="reset" value="Reset"></p>';
+    $html .= '</form>';
+    
+    return $html;
 }
 
 add_action('init', 'kp_process_transfer');
