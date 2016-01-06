@@ -66,6 +66,7 @@ function form_recall_block($user_lk){
         $html .= '<input class="btn btn-default" type="reset" value="Reset"></p>';
     $html .= '</form>';
     
+    
     return $html;
 }
 
