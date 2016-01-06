@@ -53,7 +53,18 @@ function give_video_update( $post_id ){
 	return $post_id;
 }
 
-    
+//Validate numbers
+function validate_int($input, $max, $min = 1)
+{
+  return filter_var(
+    $input,
+    FILTER_VALIDATE_INT,
+    array(
+      //'flags'   => FILTER_FLAG_ALLOW_HEX,
+      'options' => array('min_range' => $min, 'max_range' => $max)
+    )
+  );
+}    
         //Pavel
 
 
