@@ -109,39 +109,34 @@ function kp_process_transfer() {
             $amount_have_to = get_post_meta( $form_id_to, '_give_form_earnings', true );
             $substraction_to = $amount_have_to - $amount_goal_to;
             
+            $user_id = get_current_user_id();
             //Amount to transfer
             $transfer = sanitize_text_field($_POST['money']);
             if( validate_int( $transfer, $substraction_from) ){
-                 //New data
-            $new_amount_from = $amount_have_from - $transfer;
-            $new_amount_to = $amount_have_to + $transfer;
-            
-            // update_post_meta( $form_id_from, '_give_form_earnings', $new_amount_from );
-            //update_post_meta( $form_id_to, '_give_form_earnings', $new_amount_to );
+                     //New data
+                $new_amount_from = $amount_have_from - $transfer;
+                $new_amount_to = $amount_have_to + $transfer;
+
+                update_post_meta( $form_id_from, '_give_form_earnings', $new_amount_from );
+                update_post_meta( $form_id_to, '_give_form_earnings', $new_amount_to );
+
+                $location_ok = get_bloginfo('url') . '/account/?user='. $user_id . '&tab=transfer_funds&kp-message=transfer_completed';
+                wp_redirect( $location_ok ); exit;
             } else{
-                 $location_fail = get_bloginfo('url') . '/account/?user=1&tab=transfer_funds&kp-message=transfer_failed';
+                 $location_fail = get_bloginfo('url') . '/account/?user='. $user_id . '&tab=transfer_funds&kp-message=int_failed';
                  wp_redirect( $location_fail ); exit;
             }
             
-           
-           
-//            if( ! $_POST['au_expiration'] || strlen( trim( $_POST['au_expiration'] ) ) <= 0 ) {
-//		//wp_die( __('Please select the expiration date for users.', 'rcp_csvui' ), __('Error') );
-//                wp_redirect( admin_url( '/options-general.php?page=activate_users.php&au-message=users-error-activated' ) ); exit;
-//		}
-          
-      
-       
-        $location_ok = get_bloginfo('url') . '/account/?user=1&tab=transfer_funds&kp-message=transfer_completed';
-       // wp_redirect( $location_ok ); exit;
         }
  }
  
  
  add_action('init','add_notify_update_profile');
-function add_notify_update_profile(){    
-    if (isset(sanitize_text_field($_GET['kp-message'])) && $_GET['kp-message'] == 'transfer_completed') rcl_notice_text('Transfer complete','success');
-    if (isset(sanitize_text_field($_GET['kp-message'])) && $_GET['kp-message'] == 'transfer_failed') rcl_notice_text('Transfer complete','warning');
+function add_notify_update_profile(){ 
+    $complete = 'Transfer completed';
+    $int_failed = 'The amount that can be transferred must be: integer, should be more than a dollar, do not exceed the maximum amount possible for transfer.';
+    if (isset($_GET['kp-message']) && sanitize_text_field($_GET['kp-message']) == 'transfer_completed'){ rcl_notice_text($complete,'success');}
+    if (isset($_GET['kp-message']) && sanitize_text_field($_GET['kp-message']) == 'int_failed'){ rcl_notice_text($int_failed,'warning');}
 }
 
 function add_tab_transfer_form_rcl($array_tabs){
