@@ -84,7 +84,7 @@ $give_youtube = get_post_meta($post->ID, 'youtube', 1);
             </div>
         </div>
         </div><!-- #div row-## --> 
-        
+       
         <div class="row">
             <div class="col-md-12" id="text-content">
                <div id="give-form-content-<?php echo $form_id ?>" class="text-explain"><?php echo $content; ?> </div>
