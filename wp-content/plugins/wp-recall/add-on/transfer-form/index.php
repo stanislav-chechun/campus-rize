@@ -51,40 +51,49 @@ function form_recall_block($user_lk){
                 $html .=  '</tr>';
         }
 
-                    $html .= '</table>';  
-        $html .= '<h3>You can transfer the money available to the goals that are made: $' . $sum_transfer . '</h3>';
-        $html .= '<form  class="form-inline" id="transfer_form" method="post">';
-            $html .= '<div class="form-group">';
-            $html .= '<label for="aims_from">' . __( 'Transfer money from: ') . '</label>';
-                    $html .= '<select id="aims_from"  name="aims_from" required>';
-                            foreach( $aims_from as $aim){
-                                $html .=  '<option value="' . $aim[3] . '">' . $aim[0] . '</option>';
-                            } 	             
-                    $html .= '</select>';
-            $html .= '</div>';
-
-            $html .= '<div class="form-group">';
-            $html .= '<label for="aims_to">' . __( 'Transfer money to: ') . '</label>';
-                    $html .= '<select id="aims_to"  name="aims_to" required>';
-                            foreach( $aims_to as $aim){
-                                $html .=  '<option value="' . $aim[3] . '">' . $aim[0] . '</option>';
-                            } 	             
-                    $html .= '</select>';
-            $html .= '</div>';
-
-            $html .= '<div class="form-group">';
-                $html .= '<div class="input-group">';
-                $html .= '<label class="sr-only"  for="money">' .  __( 'Enter the amount: ') . '</label>';
-                $html .= '<div class="input-group-addon">$</div>';
-                $html .= '<input name="money" class="form-control"  id="money" placeholder="Amount" type="text" value=""/>';
+                    $html .= '</table>';
+        if( count($aims_from) > 0 && count($aims_to) > 0){
+            $html .= '<h3>You can transfer the money available to the goals that are made: $' . $sum_transfer . '</h3>';
+            $html .= '<form  class="form-inline" id="transfer_form" method="post">';
+                $html .= '<div class="form-group">';
+                $html .= '<label for="aims_from">' . __( 'Transfer money from: ') . '</label>';
+                        $html .= '<select id="aims_from"  name="aims_from" required>';
+                                foreach( $aims_from as $aim){
+                                    $html .=  '<option value="' . $aim[3] . '">' . $aim[0] . '</option>';
+                                } 	             
+                        $html .= '</select>';
                 $html .= '</div>';
-            $html .= '</div>';
 
-            $html .= '<input type="hidden" name="kp_transfer" value="process_kp_transfer"/>';
-            $html .=  wp_nonce_field('kp_nonce', 'kp_nonce');
-            $html .= '<p><input class="btn btn-default" type="submit" value="Transfer">';
-            $html .= '<input class="btn btn-default" type="reset" value="Reset"></p>';
-        $html .= '</form>'; 
+                $html .= '<div class="form-group">';
+                $html .= '<label for="aims_to">' . __( 'Transfer money to: ') . '</label>';
+                        $html .= '<select id="aims_to"  name="aims_to" required>';
+                                foreach( $aims_to as $aim){
+                                    $html .=  '<option value="' . $aim[3] . '">' . $aim[0] . '</option>';
+                                } 	             
+                        $html .= '</select>';
+                $html .= '</div>';
+
+                $html .= '<div class="form-group">';
+                    $html .= '<div class="input-group">';
+                    $html .= '<label class="sr-only"  for="money">' .  __( 'Enter the amount: ') . '</label>';
+                    $html .= '<div class="input-group-addon">$</div>';
+                    $html .= '<input name="money" class="form-control"  id="money" placeholder="Amount" type="text" value=""/>';
+                    $html .= '</div>';
+                $html .= '</div>';
+
+                $html .= '<input type="hidden" name="kp_transfer" value="process_kp_transfer"/>';
+                $html .=  wp_nonce_field('kp_nonce', 'kp_nonce');
+                $html .= '<p><input class="btn btn-default" type="submit" value="Transfer">';
+                $html .= '<input class="btn btn-default" type="reset" value="Reset"></p>';
+            $html .= '</form>'; 
+        // If it nothing to display in selects
+        } else{
+            $html .= '<div class="center-block">';
+            $html .= '<p class="bg-warning">';
+                $html .= 'Sorry, you have nothing to transfer or all of your aims are achived!';
+            $html .= '</p>';
+        $html .= '</div>';
+        }
     } else{
         $html .= '<div class="center-block">';
             $html .= '<p class="bg-warning">';
@@ -141,7 +150,7 @@ function kp_process_transfer() {
  add_action('init','add_notify_update_profile');
 function add_notify_update_profile(){ 
     $complete = 'Transfer completed';
-    $int_failed = 'The amount that can be transferred must be: integer, should be more than a dollar, do not exceed the maximum amount possible for transfer.';
+    $int_failed = 'The amount that can be transferred must be: integer, should be more than a zero, do not exceed the maximum amount possible for transfer.';
     if (isset($_GET['kp-message']) && sanitize_text_field($_GET['kp-message']) == 'transfer_completed'){ rcl_notice_text($complete,'success');}
     if (isset($_GET['kp-message']) && sanitize_text_field($_GET['kp-message']) == 'int_failed'){ rcl_notice_text($int_failed,'warning');}
 }
