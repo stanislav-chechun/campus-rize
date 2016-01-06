@@ -27,7 +27,7 @@ function form_recall_block($user_lk){
         $amount_goal  = get_post_meta( $form_id, '_give_set_goal', true );
         $amount_have = get_post_meta( $form_id, '_give_form_earnings', true );
         $substraction = $amount_have - $amount_goal;
-        $aims[] .= get_the_title();
+       // $aims[] .= get_the_title();
         
     $html .= '<tr><td><a href="' . get_permalink() . '">' . get_the_title() . '</a></td>';
     $html .= '<td>' . $amount_have . '</td>';
@@ -35,21 +35,40 @@ function form_recall_block($user_lk){
         if( $substraction > 0 ){
             $html .=  '<td class="success">' . $substraction . '</td>';
             $sum_transfer += $substraction;
+            //Create array for select. Bigger zero
+            $aims_from[$form_id][] .= get_the_title();
+            $aims_from[$form_id][] .= $amount_have;
+            $aims_from[$form_id][] .= $substraction;
+            $aims_from[$form_id][] .= $form_id;
         } else{
             $html .=  '<td class="danger">' . $substraction . '</td>';
+            //Create array for select. Below zero
+            $aims_to[$form_id][] .= get_the_title();
+            $aims_to[$form_id][] .= $amount_have;
+            $aims_to[$form_id][] .= $substraction;
+            $aims_to[$form_id][] .= $form_id;
         }
         $html .=  '</tr>';
     }
-                $html .= '</table>';
+                $html .= '</table>';  
     $html .= '<h3>You can transfer the money available to the goals that are made: $' . $sum_transfer . '</h3>';
     $html .= '<form  class="form-inline" id="transfer_form" method="post">';
-    $html .= '<div class="form-group">';
-    $html .= '<label for="aims">' . __( 'Choose your aim: ') . '</label>';
-            $html .= '<select id="aims"  name="aims" required>';
-                    foreach( $aims as $aim){
-                        $html .=  '<option value="' . $aim . '">' . $aim . '</option>';
-                    } 	             
-            $html .= '</select>';
+        $html .= '<div class="form-group">';
+        $html .= '<label for="aims_from">' . __( 'Transfer money from: ') . '</label>';
+                $html .= '<select id="aims_from"  name="aims_from" required>';
+                        foreach( $aims_from as $aim){
+                            $html .=  '<option value="' . $aim[3] . '">' . $aim[0] . '</option>';
+                        } 	             
+                $html .= '</select>';
+        $html .= '</div>';
+        
+        $html .= '<div class="form-group">';
+        $html .= '<label for="aims_to">' . __( 'Transfer money to: ') . '</label>';
+                $html .= '<select id="aims_to"  name="aims_to" required>';
+                        foreach( $aims_to as $aim){
+                            $html .=  '<option value="' . $aim[3] . '">' . $aim[0] . '</option>';
+                        } 	             
+                $html .= '</select>';
         $html .= '</div>';
         
         $html .= '<div class="form-group">';
@@ -64,8 +83,7 @@ function form_recall_block($user_lk){
         $html .=  wp_nonce_field('kp_nonce', 'kp_nonce');
         $html .= '<p><input class="btn btn-default" type="submit" value="Transfer">';
         $html .= '<input class="btn btn-default" type="reset" value="Reset"></p>';
-    $html .= '</form>';
-    
+    $html .= '</form>'; 
     
     return $html;
 }
@@ -74,37 +92,56 @@ add_action('init', 'kp_process_transfer');
 
 function kp_process_transfer() {
 
-	if( isset( $_POST['aims'] ) && $_POST['kp_transfer'] == 'process_kp_transfer' ) {
-
-//            if( ! wp_verify_nonce( $_POST['au_nonce'], 'au_nonce' ) ) {
-//                return;
-//            }
+	if( isset( $_POST['aims_to'], $_POST['aims_from'], $_POST['money'] ) && $_POST['kp_transfer'] == 'process_kp_transfer' ) {
+            
+            if( ! wp_verify_nonce( $_POST['kp_nonce'], 'kp_nonce' ) ) {
+                return;
+            }
+            //Retrieve metadata From 
+            $form_id_from = sanitize_text_field($_POST['aims_from']);
+            $amount_goal_from  = get_post_meta( $form_id_from, '_give_set_goal', true );
+            $amount_have_from = get_post_meta( $form_id_from, '_give_form_earnings', true );
+            $substraction_from = $amount_have_from - $amount_goal_from;
+            
+            //Retrieve metadata TO 
+            $form_id_to = sanitize_text_field($_POST['aims_to']);
+            $amount_goal_to  = get_post_meta( $form_id_to, '_give_set_goal', true );
+            $amount_have_to = get_post_meta( $form_id_to, '_give_form_earnings', true );
+            $substraction_to = $amount_have_to - $amount_goal_to;
+            
+            //Amount to transfer
+            $transfer = sanitize_text_field($_POST['money']);
+            if( validate_int( $transfer, $substraction_from) ){
+                 //New data
+            $new_amount_from = $amount_have_from - $transfer;
+            $new_amount_to = $amount_have_to + $transfer;
+            
+            // update_post_meta( $form_id_from, '_give_form_earnings', $new_amount_from );
+            //update_post_meta( $form_id_to, '_give_form_earnings', $new_amount_to );
+            } else{
+                 $location_fail = get_bloginfo('url') . '/account/?user=1&tab=transfer_funds&kp-message=transfer_failed';
+                 wp_redirect( $location_fail ); exit;
+            }
+            
+           
+           
 //            if( ! $_POST['au_expiration'] || strlen( trim( $_POST['au_expiration'] ) ) <= 0 ) {
 //		//wp_die( __('Please select the expiration date for users.', 'rcp_csvui' ), __('Error') );
 //                wp_redirect( admin_url( '/options-general.php?page=activate_users.php&au-message=users-error-activated' ) ); exit;
 //		}
           
-             //My testing // $user_id = 524;
-//        $expiration = isset( $_POST['au_expiration'] ) ? sanitize_text_field( $_POST['au_expiration'] ) : false;
-//        $status = 'active';
-//        $subscription_id = '2';
-//        $signup_method = 'live';
-//
-//   $all_users = au_get_all_users();
-//    foreach ($all_users as $user) {
-//       update_user_meta( $user->ID, 'rcp_status', $status );
-//        
-//    }
+      
        
-        $location = get_bloginfo('url') . '/account/?user=1&tab=transfer_funds&kp-message=transfer_completed';
-        wp_redirect( $location ); exit;
+        $location_ok = get_bloginfo('url') . '/account/?user=1&tab=transfer_funds&kp-message=transfer_completed';
+       // wp_redirect( $location_ok ); exit;
         }
  }
  
  
  add_action('init','add_notify_update_profile');
 function add_notify_update_profile(){    
-    if (isset($_GET['kp-message'])) rcl_notice_text('Transfer complete','success');
+    if (isset(sanitize_text_field($_GET['kp-message'])) && $_GET['kp-message'] == 'transfer_completed') rcl_notice_text('Transfer complete','success');
+    if (isset(sanitize_text_field($_GET['kp-message'])) && $_GET['kp-message'] == 'transfer_failed') rcl_notice_text('Transfer complete','warning');
 }
 
 function add_tab_transfer_form_rcl($array_tabs){
