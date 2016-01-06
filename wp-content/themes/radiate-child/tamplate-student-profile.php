@@ -45,7 +45,8 @@ get_header(); ?>
 
 			echo '<h2>' . $user_info->first_name .' '. $user_info->last_name . '</h2>'; 
 			echo '<p>' . $user_info->description . '</p>';			
-			echo '<p>' . $user_meta['story_54'][0] . '</p>';	
+			//echo '<p>' . preg_replace("/[\r\n|\n|\r]+/", "</p><p>", nl2br($user_meta['story_54'][0])) . '</p>';
+			echo '<p>' . preg_replace("/\n/", "</p><p>", $user_meta['story_54'][0]) . '</p>';	
 
 		}	
 
