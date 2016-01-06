@@ -100,6 +100,7 @@ function kp_process_transfer() {
         }
  }
  
+ 
  add_action('init','add_notify_update_profile');
 function add_notify_update_profile(){    
     if (isset($_GET['kp-message'])) rcl_notice_text('Transfer complete','success');
