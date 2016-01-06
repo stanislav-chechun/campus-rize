@@ -51,11 +51,13 @@ get_header(); ?>
 									$posts->the_post();
 						
 									$post_id = get_the_ID();
-									$goal = get_post_meta($post_id, '_give_set_goal');												
+									$goal_give = get_post_meta($post_id, '_give_set_goal');												
 									$earnings = get_post_meta($post_id, '_give_form_earnings');
-												
+										
+									$goal = str_replace(",", "", $goal_give);
+									
 									$goal_sum += $goal[0];
-									$earnings_sum += $earnings[0];
+									$earnings_sum += $earnings[0];									
 
 								}
 
