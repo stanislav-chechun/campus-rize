@@ -57,7 +57,7 @@ get_header(); ?>
 									$goal = str_replace(",", "", $goal_give);
 									
 									$goal_sum += $goal[0];
-									$earnings_sum += $earnings[0];									
+									$earnings_sum += $earnings[0];								
 
 								}
 
