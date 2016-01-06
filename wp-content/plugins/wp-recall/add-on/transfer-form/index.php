@@ -39,9 +39,8 @@ function form_recall_block($user_lk){
             $html .=  '<td class="danger">' . $substraction . '</td>';
         }
         $html .=  '</tr>';
-}
-            
-    $html .= '</table>';
+    }
+                $html .= '</table>';
     $html .= '<h3>You can transfer the money available to the goals that are made: $' . $sum_transfer . '</h3>';
     $html .= '<form  class="form-inline" id="transfer_form" method="post">';
     $html .= '<div class="form-group">';
