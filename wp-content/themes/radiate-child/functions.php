@@ -54,7 +54,7 @@ function give_video_update( $post_id ){
 }
 
 //Validate numbers
-function validate_int($input, $max, $min = 1)
+function validate_int($input, $max, $min = 0  )
 {
   return filter_var(
     $input,
