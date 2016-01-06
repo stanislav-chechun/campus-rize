@@ -10,10 +10,20 @@
 get_header(); ?>
 
 	<!-- banner-wrap -->
-	<div id="banner-wrap" class="wsite-background wsite-custom-background">
+	<?php 
+		if ( has_post_thumbnail() ) {
+			$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );
+			$url = $thumb['0'];
+	?> 					
+				
+	<div id="banner-wrap" class="wsite-background wsite-custom-background" style="background-image:url(<?php echo $url; ?>);">
+
+	<?php } ?>	
+
 		<div id="banner">
-			<h2>Campus Rise</h2>
-			<p>Helping exemplary youth from low-income households get to and through college.</p>			
+			<?php while (have_posts()) : the_post(); ?>			
+				<?php the_content(); ?>			
+			<?php endwhile; ?>		
 			<a class="wsite-button wsite-button-large wsite-button-highlight" href="<?php echo get_home_url(); ?>/index.php/donate/" >
 				<span class="wsite-button-inner">Sponsor a student now</span>
 			</a>		
