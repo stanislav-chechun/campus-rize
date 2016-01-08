@@ -70,6 +70,7 @@ add_action('init','add_tab_view_your_awards');
 
 				return $awards;
 			}
+			
 			wp_reset_postdata();
 		}    
 	}
