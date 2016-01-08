@@ -58,7 +58,7 @@ add_action('init','add_tab_view_your_awards');
 
 				}
 
-				$awards .= '<tr>
+				$awards .= '<tr class="totals">
 						   		<td colspan="2">Totals:</td>
 						   		<td>'. $earnings_sum .'</td>
 						   		<td>'. $goal_sum .'</td>

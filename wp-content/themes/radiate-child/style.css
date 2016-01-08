@@ -1035,4 +1035,8 @@ div#container div#content article div.progress{
 	background-color: #F0F0F0;
 }
 
+.totals {
+	font-weight: bold;
+}
+
 /* end new changes */
