@@ -64,6 +64,8 @@ add_action('init','add_tab_view_your_awards');
 						   		<td>'. $goal_sum .'</td>
 						   	</tr>
 						</table>
+						<a href="#" class="cabinet-btn">Redeem Awards</a>
+						<a href="#" class="cabinet-btn">Transfer Funds</a>
 					</div>';
 
 				return $awards;
