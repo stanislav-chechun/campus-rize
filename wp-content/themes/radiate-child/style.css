@@ -1039,4 +1039,12 @@ div#container div#content article div.progress{
 	font-weight: bold;
 }
 
+.cabinet-btn {
+	background-color: #439A66;
+	padding: 8px 10px;
+	color: #fff;
+	margin: 30px 0 30px 10px;
+	float: right;
+}
+
 /* end new changes */
