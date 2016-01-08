@@ -14,9 +14,9 @@ function form_donation_block($user_lk){
     include_once RCL_PATH .'/add-on/publicpost/rcl_publicform.php';
     $ss = new Rcl_PublicForm($type_editor="1");
     $ss->type_editor = 1;
-    $html .= rcl_get_edit_box();
-    var_dump(rcl_get_edit_box);
-    $html .= rcl_get_edit_box(1);
+    $html .= rcl_get_edit_box('text');
+    var_dump(rcl_get_edit_box(1));
+   
     $html .= '<div class="rcl-public-editor">
 
 			<div class="rcl-editor-content">
