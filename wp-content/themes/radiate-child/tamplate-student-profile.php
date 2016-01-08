@@ -62,8 +62,10 @@ get_header(); ?>
 	?>
 
 			<div class="row">
-				<div id="carousel-wishes" class="carousel slide" data-ride="carousel">					  
-					<div class="carousel-inner" role="listbox">
+				<!--<div id="owl-example" class="owl-carousel">-->
+				<div class="owl-carousel">
+				<!--<div id="carousel-wishes" class="carousel slide" data-ride="carousel">					  
+					<div class="carousel-inner" role="listbox">-->
 					    
 
 	<?php			
@@ -71,7 +73,8 @@ get_header(); ?>
 							$posts->the_post();
 	?>
 					
-							<div class="item">			      
+							<!--<div class="item">-->
+							<div>		      
 						    	<?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
 						    	<div class="carousel-caption">						 
 						        	<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -81,7 +84,7 @@ get_header(); ?>
 
 	<?php }	?>					    
 					    
-					</div>
+					<!--</div>
 					  
 					<a class="left carousel-control" href="#carousel-wishes" role="button" data-slide="prev">
 						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -91,6 +94,7 @@ get_header(); ?>
 					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 					    <span class="sr-only">Next</span>
 					</a>
+				</div>-->
 				</div>
 			</div>
 
