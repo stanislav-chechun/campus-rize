@@ -27,14 +27,16 @@ add_action('init','add_tab_view_your_awards');
 				$goal_sum = 0;												
 				$earnings_sum = 0;
 
-				$awards .= '<table>
-								<caption>Award Summary</caption>
-								<tr>
-								    <th>Award Description</th>
-								    <th>Category</th>
-								    <th>Offered, $</th>
-								    <th>Accepted, $</th>
-							   	</tr>';
+				$awards .= '<div class="your-awards">
+								<h3>Award Summary</h3>
+								<p>The following reflects awarded aid. Refer to your Award Notification e-mail for additional details.</p>
+								<table>
+									<tr>
+									    <th>Award Description</th>
+									    <th>Category</th>
+									    <th>Offered, $</th>
+									    <th>Accepted, $</th>
+								   	</tr>';
 
 				while ( $posts->have_posts() ) {
 					$posts->the_post();
@@ -48,7 +50,7 @@ add_action('init','add_tab_view_your_awards');
 					$earnings_sum += $earnings[0];
 
 					$awards .= '<tr>
-								   	<td>' . get_the_title().'</td>
+								   	<td><a href="'. get_the_permalink() .'">' . get_the_title().'</a></td>
 								   	<td>wishes</td>
 								   	<td>'. $earnings[0]. '</td>
 								   	<td>'. $goal_give[0].'</td>
@@ -61,7 +63,8 @@ add_action('init','add_tab_view_your_awards');
 						   		<td>'. $earnings_sum .'</td>
 						   		<td>'. $goal_sum .'</td>
 						   	</tr>
-						</table>';
+						</table>
+					</div>';
 
 				return $awards;
 			}
