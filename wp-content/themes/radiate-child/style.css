@@ -1019,4 +1019,20 @@ div#container div#content article div.progress{
 	margin: 0 30px 30px 0;
 }
 
+#lk-content .your-awards th, #lk-content .your-awards td {
+	padding: 10px;
+}
+
+#lk-content .your-awards tr:nth-child(odd) {
+	background-color: #FAFAFA;
+}
+
+#lk-content .your-awards tr:first-child {
+	background-color: #F3F3F3;
+}
+
+#lk-content .your-awards tr:hover {
+	background-color: #F0F0F0;
+}
+
 /* end new changes */
