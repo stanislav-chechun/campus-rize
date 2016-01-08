@@ -1,0 +1,7 @@
+﻿Name: Form for Donates;
+Version: 1.0;
+Support Core: 10.0.0;
+Description: Дополнение для Wp-Recall, добавляющее свою вкладку for the form donations;
+Author: Pavel Kovalchuk;
+Author Uri: ;
+Add-on Uri: ;

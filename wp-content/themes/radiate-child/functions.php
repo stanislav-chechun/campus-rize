@@ -16,6 +16,15 @@
         
 add_action('add_meta_boxes', 'video_yt__donations', 1);
 
+//It's for downloading map on student's account. For Plugin Store Locator
+function map_please(){
+    // if (isset($_GET['tab']) && sanitize_text_field($_GET['tab']) == 'assistance_map'){
+    if (isset($_GET['tab']) ){
+        $GLOBALS['is_on_sl_page'] = 1;
+     }
+}
+ add_action('wp', 'map_please');
+ 
 function video_yt__donations() {
     add_meta_box( 'give-video', 'Video presentation', 'need_video_box_func', 'give_forms', 'side', 'low'  );
 }
@@ -64,7 +73,7 @@ function validate_int($input, $max, $min = 0  )
       'options' => array('min_range' => $min, 'max_range' => $max)
     )
   );
-}    
+}   
         //Pavel
 
 
