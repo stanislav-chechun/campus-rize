@@ -74,7 +74,16 @@ get_header(); ?>
 					
 							<!--<div class="item">-->
 							<div>		      
-						    	<?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+	<?php 
+						    		if ( has_post_thumbnail() ) { 
+						    			the_post_thumbnail(); 
+						    		} 
+						    		else {
+	?>
+										<img src="<?php echo get_home_url(); ?>/wp-content/uploads/2016/01/no_photo.png" alt="">
+	<?php
+						    		}
+	?>
 						    	<!--<div class="carousel-caption">-->						 
 						        	<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 						    	<!--</div>-->
