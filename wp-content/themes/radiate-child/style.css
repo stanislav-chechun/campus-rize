@@ -1047,5 +1047,12 @@ div#container div#content article div.progress{
 	float: right;
 }
 
+.owl-carousel {
+	text-align: center;
+}
+
+.owl-carousel h2 a {
+	text-decoration: none;
+}
 
 /* end new changes */
