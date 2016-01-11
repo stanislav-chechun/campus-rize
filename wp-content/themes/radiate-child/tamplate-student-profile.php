@@ -4,7 +4,7 @@ Template Name: Student Profile
 */
 get_header(); ?>
 
-<div class="content-wrap text-page student-profile">
+<div class="text-page student-profile">
 		
 	<?php 
 		
@@ -62,7 +62,6 @@ get_header(); ?>
 	?>
 
 			<div class="row">
-				<!--<div id="owl-example" class="owl-carousel">-->
 				<div class="owl-carousel">
 				<!--<div id="carousel-wishes" class="carousel slide" data-ride="carousel">					  
 					<div class="carousel-inner" role="listbox">-->
@@ -76,9 +75,9 @@ get_header(); ?>
 							<!--<div class="item">-->
 							<div>		      
 						    	<?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
-						    	<div class="carousel-caption">						 
+						    	<!--<div class="carousel-caption">-->						 
 						        	<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-						    	</div>
+						    	<!--</div>-->
 						    </div>
 					    
 
