@@ -92,17 +92,11 @@ jQuery( document ).ready(function() {
 			
  	});
 	
-	jQuery("#carousel-wishes div.item:first-child").addClass("active");
-
-	/*jQuery("#owl-example").owlCarousel({
-		items : 2,
-		autoPlay : 500,
-	});*/
-	//jQuery("#owl-example").owlCarousel();
+	//jQuery("#carousel-wishes div.item:first-child").addClass("active");
+	
 	jQuery(".owl-carousel").owlCarousel({
 		autoPlay : true,		
 		items : 4,
-		navigation : true,
 		stopOnHover : true,
 	});
 
