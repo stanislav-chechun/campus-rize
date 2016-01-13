@@ -3,7 +3,13 @@
 add_action('init','add_tab_view_your_awards');
 
 	function add_tab_view_your_awards(){
-	    rcl_tab('awards', 'view_your_awards_showup', 'View your awards', array('public'=>0,'class'=>'fa-dollar','order'=>11));
+
+		$user = $_GET['user'];
+		$user_info = get_userdata($user);
+
+		if ( $user_info->roles[0] == 'student' ){		
+	    	rcl_tab('awards', 'view_your_awards_showup', 'View your awards', array('public'=>0,'class'=>'fa-dollar','order'=>11));
+	    }
 	}
 
 	function view_your_awards_showup(){
