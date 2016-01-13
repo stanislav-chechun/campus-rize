@@ -46,7 +46,7 @@ Version:        0.1.0
  .wsite-form-label { line-height: 2; font-weight: normal; }
  .wsite-form-input, .wsite-search-element-input, #commentPostDiv .field input[type=text], #commentPostDiv .field textarea, select { height: auto !important; font-size: 1em; font-family: inherit; padding: .75em 1em !important; box-sizing: border-box; line-height: 1.25; box-shadow: none ; background: none; border-radius: 3px; border: 1px solid #dcdcdc; }
  .wsite-form-input:focus, .wsite-search-element-input:focus, #commentPostDiv .field input[type=text]:focus, #commentPostDiv .field textarea:focus { border-color: #b1b1b1 !important; }
- select { -webkit-appearance: none !important; -moz-appearance: none !important; appearance: none !important; line-height: 1; height: 40px !important; background: transparent url(theme/images/dropdown.png?1448511627) no-repeat 97% center; }
+ select { /*-webkit-appearance: none !important; -moz-appearance: none !important; appearance: none !important;*/ line-height: 1; height: 40px !important; background: transparent url(theme/images/dropdown.png?1448511627) no-repeat 97% center; }
  .wsite-form-field input[type='checkbox'], .wsite-form-field input[type='radio'], .wsite-com-product-option-label input[type='radio'] { display: none !important; }
  .wsite-form-field input[type='checkbox'] + label:before, .wsite-form-field input[type='radio'] + label:before, .wsite-com-product-option-label input[type='radio'] + span:before { content: ''; display: inline-block; height: 22px; width: 22px; margin-right: 8px; padding: 1px; vertical-align: middle; }
  .wsite-form-field input[type='radio'] + label:before, .wsite-com-product-option-label input[type='radio'] + span:before { background: transparent url(theme/images/radio.png?1448511627) no-repeat top left; }
@@ -1053,6 +1053,13 @@ div#container div#content article div.progress{
 
 .owl-carousel h2 a {
 	text-decoration: none;
+}
+
+.wp-rcl-select {
+	height: auto !important;
+	padding: 5px 0 5px 25px !important;
+	margin: 0 0 0 15px;
+	width: 82% !important;
 }
 
 /* end new changes */
