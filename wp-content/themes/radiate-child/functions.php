@@ -25,7 +25,7 @@ function map_please(){
 }
  add_action('wp', 'map_please');
  
-function video_yt__donations() {
+ function video_yt__donations() {
     add_meta_box( 'give-video', 'Video presentation', 'need_video_box_func', 'give_forms', 'side', 'low'  );
 }
 
