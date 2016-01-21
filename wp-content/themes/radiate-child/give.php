@@ -36,30 +36,41 @@ $give_youtube = get_post_meta($post->ID, 'youtube', 1);
 <article id="post-<?php the_ID(); ?>">
     <div class="row">
         <div class="col-md-6 col-xs-12" id="photo-text">
-            <?php 
+            <?php
+ echo '<pre>'; var_dump(get_post_meta($post->ID));  var_dump(get_post()); echo '</pre>';
             if ( $give_youtube !== ''){
                 //Check if video exist
                 $headers = get_headers('https://www.youtube.com/oembed?format=json&url=http://www.youtube.com/watch?v=' . $give_youtube);
-                //echo '<pre>'; var_dump($headers); echo '</pre>';
+                
                 if(is_array($headers) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$headers[0]) : false){
                 ?>    <iframe src="https://www.youtube.com/embed/<?php echo $give_youtube; ?>?rel=0" frameborder="0" rel="0" allowfullscreen></iframe>
-                <?php } else {
-                    ?> <h2>Sorry, but video-id is invalid on youtube.com</h2>
-                    <image src="<?php echo get_stylesheet_directory_uri(); ?>/images/student.jpg">
-                <?php }
+                <?php } else { //Создать функцию вывода однородных элементов и проверки на роль студента для извинений))
+                            ?> <h2>Sorry, but video-id is invalid on youtube.com</h2>
+                            <?php 
+                            if( has_post_thumbnail()){ 
+                                the_post_thumbnail();
+                            } else{?>
+                                <image src="<?php echo get_stylesheet_directory_uri(); ?>/images/student.jpg">
+                            <?php }
+                        }
             } 
             elseif ( $give_vimeo !== '') {
                 $headers = get_headers('http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/' . $give_vimeo);
                 if(is_array($headers) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$headers[0]) : false){
                 ?>    <iframe src="https://player.vimeo.com/video/<?php echo $give_vimeo; ?>?color=fff700&byline=0&portrait=0&badge=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 <?php } else {
-                    ?> <h2>Sorry, but video-id is invalid on vimeo.com</h2>
-                    <image src="<?php echo get_stylesheet_directory_uri(); ?>/images/student.jpg">
-                <?php }?>
+                            ?> <h2>Sorry, but video-id is invalid on vimeo.com</h2>
+                            <?php 
+                            if( has_post_thumbnail()){ 
+                                the_post_thumbnail();
+                                } else{?>
+                                <image src="<?php echo get_stylesheet_directory_uri(); ?>/images/student.jpg">
+                            <?php }
+                            }?>
                     
             <?php } 
             elseif ( $give_youtube == '' && $give_vimeo == '' && has_post_thumbnail()) {
-                
+               
                     the_post_thumbnail();  
                
             } else{ ?>
