@@ -25,9 +25,9 @@ while ( have_posts() ) : the_post();
 
 $form_id = get_the_ID();
 $content = wpautop( get_post_meta( $form_id, '_give_form_content', true ) );
-$amount_goal  = get_post_meta( $form_id, '_give_set_goal', true );
-$amount_have = get_post_meta( $form_id, '_give_form_earnings', true );
-$width_bar = floor(($amount_have/$amount_goal)*100);
+$amount_goal  = number_format(get_post_meta( $form_id, '_give_set_goal', true ), 2, '.', '');
+$amount_have = number_format(get_post_meta( $form_id, '_give_form_earnings', true ), 2, '.', '');
+$width_bar = round(($amount_have/$amount_goal)*100, 2);
 $number_donations = give_get_form_sales_stats( $form_id);
 $give_vimeo = get_post_meta($post->ID, 'vimeo', 1);
 $give_youtube = get_post_meta($post->ID, 'youtube', 1);
@@ -36,12 +36,12 @@ $give_youtube = get_post_meta($post->ID, 'youtube', 1);
 <article id="post-<?php the_ID(); ?>">
     <div class="row">
         <div class="col-md-6 col-xs-12" id="photo-text">
-            <?php
+            <?php  echo $amount_goal . ' ' . $amount_have . ' ' . $width_bar; //////////
  echo '<pre>'; var_dump(get_post_meta($post->ID));  var_dump(get_post()); echo '</pre>';
             if ( $give_youtube !== ''){
                 //Check if video exist
                 $headers = get_headers('https://www.youtube.com/oembed?format=json&url=http://www.youtube.com/watch?v=' . $give_youtube);
-                
+               
                 if(is_array($headers) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$headers[0]) : false){
                 ?>    <iframe src="https://www.youtube.com/embed/<?php echo $give_youtube; ?>?rel=0" frameborder="0" rel="0" allowfullscreen></iframe>
                 <?php } else { //Создать функцию вывода однородных элементов и проверки на роль студента для извинений))
@@ -85,7 +85,7 @@ $give_youtube = get_post_meta($post->ID, 'youtube', 1);
                 </div>
                 <div class="progress">
                     <div class="progress-bar progress-bar-success" role="progressbar" id="form-progress" aria-valuenow="<?php echo $width_bar; ?>" 
-                        aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $width_bar; ?>%">
+                        aria-valuemin="0" aria-valuemax="100" style="min-width: 3em; width: <?php echo $width_bar; ?>%">
                         <?php echo $width_bar; ?>%
                     </div>
                 </div>

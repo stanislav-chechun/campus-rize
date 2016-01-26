@@ -129,20 +129,21 @@ function kp_process_create() {
                 wp_redirect( $location_fail ); exit;
             }
             //Доделать проверку целого значения
-//            if(! validate_int( $_POST['goal_form'], 1000000 )){
-//                $location_fail = get_bloginfo('url') . '/account/?user='. $user_id . '&tab=donation_form&kp-message=goal_failed';
-//                wp_redirect( $location_fail ); exit;
-//            }
+            if(! validate_int( $_POST['goal_form'], 1000000 )){
+                $location_fail = get_bloginfo('url') . '/account/?user='. $user_id . '&tab=donation_form&int-message=goal_failed';
+                wp_redirect( $location_fail ); exit;
+            }
             //Retrieve data POST 
             $wish_title = sanitize_title($_POST['title_form']);
-            $wish_goal = sanitize_text_field($_POST['goal_form']);            
+            $wish_goal = sanitize_text_field($_POST['goal_form']); 
+            //Create properly format 
+            $wish_goal = number_format($wish_goal, 2, '.', '');            
             $wish_content = sanitize_text_field($_POST['content_form']);
             $wish_youtube = isset($_POST['youtube_form'])? sanitize_text_field($_POST['youtube_form']) : '';
             $wish_vimeo = isset($_POST['vimeo_form'])?sanitize_text_field($_POST['vimeo_form']) : '';
             $author_login = $user_data->user_login;
-            var_dump($wish_goal);////////////
             
-            // Создаем массив
+             // Создаем массив
     $post_data = array(
 	'post_title'    => $wish_title,
         'post_type'     => 'give_forms',
@@ -286,12 +287,12 @@ function add_notify_create_wish(){
     $complete =  __('Your wish was created') ;
     $int_failed = __('You have some problems with creating your wish! Try again!');
     $void = __('The title, the sum and the content in the form must be filled');
-    $goal = __('The sum must be less than $1 000 000');
+    $goal = __('The sum must be integer and less than $1 000 000');
     $images_fail = __('There is an error in uploading the image or you have not permission to upload the image! But your wish was created!');
     if (isset($_GET['kp-message']) && sanitize_text_field($_GET['kp-message']) == 'wish_completed'){ rcl_notice_text($complete,'success');}
     if (isset($_GET['kp-message']) && sanitize_text_field($_GET['kp-message']) == 'wish_failed'){ rcl_notice_text($int_failed,'warning');}
     if (isset($_GET['kp-message']) && sanitize_text_field($_GET['kp-message']) == 'wish_void'){ rcl_notice_text($void,'warning');}
-    if (isset($_GET['kp-message']) && sanitize_text_field($_GET['kp-message']) == 'goal_failed'){ rcl_notice_text($goal,'warning');}
+    if (isset($_GET['int-message']) && sanitize_text_field($_GET['int-message']) == 'goal_failed'){ rcl_notice_text($goal,'warning');}
     if (isset($_GET['kp-message']) && sanitize_text_field($_GET['kp-message']) == 'images_fail'){ rcl_notice_text($images_fail,'warning');}
 } 
 

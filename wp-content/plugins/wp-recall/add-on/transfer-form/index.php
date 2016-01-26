@@ -27,7 +27,15 @@ function form_recall_block($user_lk){
             $form_id = get_the_ID();
             $amount_goal  = get_post_meta( $form_id, '_give_set_goal', true );
             $amount_have = get_post_meta( $form_id, '_give_form_earnings', true );
-            $substraction = $amount_have - $amount_goal;
+            
+            //Here we do the substraction, so we must have one format for this
+            $amount_have_sub = number_format($amount_have, 2, '.', '');
+            $amount_goal_sub = str_replace(',','', $amount_goal);
+            $substraction =  give_format_amount($amount_have_sub - $amount_goal_sub); 
+           
+            //return format
+            $amount_have = give_format_amount($amount_have);
+            $amount_goal = give_format_amount($amount_goal);
            
             $html .= '<tr><td><a href="' . get_permalink() . '">' . get_the_title() . '</a></td>';
             $html .= '<td>' . $amount_have . '</td>';
@@ -117,22 +125,38 @@ function kp_process_transfer() {
             $form_id_from = sanitize_text_field($_POST['aims_from']);
             $amount_goal_from  = get_post_meta( $form_id_from, '_give_set_goal', true );
             $amount_have_from = get_post_meta( $form_id_from, '_give_form_earnings', true );
-            $substraction_from = $amount_have_from - $amount_goal_from;
+            
+            //Convert to one format:
+            $amount_goal_from_f = str_replace(',','',  $amount_goal_from);
+            $amount_have_from_f = number_format($amount_have_from, 2, '.', '');
+            
+            //Substraction
+            $substraction_from = give_format_amount($amount_have_from_f - $amount_goal_from_f);
             
             //Retrieve metadata TO 
             $form_id_to = sanitize_text_field($_POST['aims_to']);
             $amount_goal_to  = get_post_meta( $form_id_to, '_give_set_goal', true );
             $amount_have_to = get_post_meta( $form_id_to, '_give_form_earnings', true );
-            $substraction_to = $amount_have_to - $amount_goal_to;
+                       
+            //Convert to one format:
+            $amount_goal_to_f = str_replace(',','',  $amount_goal_to);
+            $amount_have_to_f = number_format($amount_have_to, 2, '.', '');
+        
+            
+            $substraction_to = give_format_amount($amount_have_to_f - $amount_goal_to_f);
             
             $user_id = get_current_user_id();
+            
             //Amount to transfer
             $transfer = sanitize_text_field($_POST['money']);
+            
             if( validate_int( $transfer, $substraction_from) ){
                      //New data
-                $new_amount_from = $amount_have_from - $transfer;
-                $new_amount_to = $amount_have_to + $transfer;
-
+                $transfer = give_format_amount( $transfer );
+                $new_amount_from = $amount_have_from_f - $transfer;
+                $new_amount_to = $amount_have_to_f + $transfer;
+                
+                //echo  number_format($new_amount_from, 2, '.', '') . ' ' .  number_format($new_amount_to, 2, '.', '');
                 update_post_meta( $form_id_from, '_give_form_earnings', $new_amount_from );
                 update_post_meta( $form_id_to, '_give_form_earnings', $new_amount_to );
 
