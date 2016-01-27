@@ -1,0 +1,7 @@
+﻿Name: Edit wish tab;
+Version: 1.0;
+Support Core: 10.0.0;
+Description: Дополнение для Wp-Recall, добавляющее свою вкладку для редактирования желаний студента;
+Author: Pavel Kovalchuk;
+Author Uri: ;
+Add-on Uri: ;
