@@ -93,7 +93,7 @@ Version:        0.1.0
  #header-right { text-align: right; }
  #nav-trigger, .mobile-trigger, #navmobile { display: none; }
  .nav li { list-style: none !important; display: inline-block; }
- .nav li a, #wsite-menus .wsite-menu li a { display: block; font-size: .9em; text-decoration: none; text-transform: uppercase; color: inherit; padding: 10px 15px; letter-spacing: 1px; }
+ .nav li a, #wsite-menus .wsite-menu li a { display: block; font-size: .9em; text-decoration: none; text-transform: uppercase; color: inherit; padding: 10px; letter-spacing: 1px; }
  .nav li a:hover, .nav li a:focus, .wsite-menu li a:hover, .wsite-menu li a:focus, #active a { color: #a6a6a6 !important; }
  #wsite-menus .wsite-menu-wrap { font-size: inherit !important; }
  #wsite-menus > .wsite-menu-wrap { margin-left: -65px; margin-top: 25px; }
