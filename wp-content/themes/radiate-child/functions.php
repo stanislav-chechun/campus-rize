@@ -19,7 +19,7 @@ add_action('add_meta_boxes', 'video_yt__donations', 1);
 //It's for downloading map on student's account. For Plugin Store Locator
 function map_please(){
     // if (isset($_GET['tab']) && sanitize_text_field($_GET['tab']) == 'assistance_map'){
-    if (isset($_GET['tab']) ){
+    if (isset($_GET['user']) ){
         $GLOBALS['is_on_sl_page'] = 1;
      }
 }

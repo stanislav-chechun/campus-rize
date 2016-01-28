@@ -9,7 +9,7 @@ function add_tab_donation_form(){
 
 function form_donation_block($user_lk){
             
-//    $html .= do_shortcode('[public-form id="1" type_editor="1" wp_editor="1"]');
+//    $html .= do_shortcode('[public-form wp_editor]');
     
     //Repetition
 //    include_once RCL_PATH .'/add-on/publicpost/rcl_publicform.php';
