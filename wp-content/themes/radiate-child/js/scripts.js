@@ -94,23 +94,29 @@ jQuery( document ).ready(function() {
 
 	jQuery("#lk-menu span.rcl-tab-button a").click(function(){
        jQuery("#chat-inner-tabs").css("display", "none");
-    });
-
-	//jQuery("#tab-button-chat a").click(function(){
-       //jQuery("#chat-inner-tabs").css("display", "block");
-    //});
+    });	
 
 	//jQuery("#chat-inner-tabs a").click(function(){
        //jQuery("#tab-button-chat a").addClass("active");
     //});
 
-
     jQuery("#tab-button-privat a").click(function(){
        jQuery("#chat-inner-tabs").css("display", "block");
     });
 
+    //if (jQuery("#tab-button-privat a").hasClass("active")){
+    if (jQuery("#lk-menu span:nth-child(2) a").hasClass("active")){
+    	jQuery("#chat-inner-tabs").css("display", "block");
+    }
+
+    if (jQuery("#chat-inner-tabs a").hasClass("active")){
+    	jQuery("#chat-inner-tabs").css("display", "block");
+    	jQuery("#lk-menu span:nth-child(2) a").addClass("active");
+    }
+
     jQuery("#chat-inner-tabs a").click(function(){
        jQuery("#lk-menu span:nth-child(2) a").addClass("active");
+       //jQuery("#tab-button-privat a").addClass("active");
     });
 
 	
