@@ -1062,4 +1062,41 @@ div#container div#content article div.progress{
 	width: 82% !important;
 }
 
+.group-posts-wrapper {
+	margin: 30px;
+}
+
+.group-posts-wrapper div.row {
+	border-bottom: 1px solid #eaeaea;
+	padding: 15px 0;
+}
+
+.group-posts-wrapper div.row div:last-child {
+	padding-right: 0;
+}
+
+.group-posts-wrapper h2 {
+    font-size: 18px;
+    background-color: #F1F1F1;
+}
+
+.author-avatar-img img {
+	float: none;
+	margin: 0;
+}
+
+.lk-content p {
+	margin-top: 30px;
+}
+
+#chat-inner-tabs {
+	display: none;
+	margin-top: 20px;
+}
+
+#chat-inner-tabs a.recall-button:focus {
+	background: #fff;
+	text-decoration: none;
+}
+
 /* end new changes */

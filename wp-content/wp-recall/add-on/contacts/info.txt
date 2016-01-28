@@ -1,0 +1,5 @@
+Name: Contacts;
+Version: 1.0;
+Description: addition to wp-recall plugin which create new tab "Contacts" in user cabinet;
+Support Core: 13.8.19;
+Author: Anjela Pavlushenko;

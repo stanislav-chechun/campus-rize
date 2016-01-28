@@ -1,13 +1,5 @@
 <?php
 
-//$user = $_GET['user'];
-//$user_info = get_userdata($user);
-
-//echo $user_info->roles[0];
-//$rol = $user_info->roles[0];
-
-//if ( $user_info->roles[0] == 'student' ){	
-
 add_action('init','add_tab_meet_your_mentor');
 
 	function add_tab_meet_your_mentor(){
@@ -89,7 +81,5 @@ add_action('init','add_tab_meet_your_mentor');
 			wp_reset_postdata();
 		} */   
 	}
-
-//}
 
 ?>

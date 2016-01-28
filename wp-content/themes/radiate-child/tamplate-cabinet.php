@@ -12,7 +12,7 @@ get_header(); ?>
 	 	
 		 	$user = $_GET['user'];
 		 	$user_info = get_userdata($user);
-			echo $user_info->roles[0];
+			//echo $user_info->roles[0];
 
 			/*if ( $user_info->roles[0] == 'student' ){
 				//echo "this is student";
@@ -24,7 +24,7 @@ get_header(); ?>
 				//echo "this is student";
 				//rcl_deactivate_addon('meet-mentor');
 				//<span class="rcl-tab-button" data-tab="meet-mentor" id="tab-button-meet-mentor"><a href="http://localhost/campus-rize/student-member-login/?user=2&amp;tab=meet-mentor" class="recall-button block_button"><i class="fa fa-calendar"></i><span>Meet your Mentor</span></a></span>
-			}	*/	 
+			}*/	 
 		 	
 	 	endwhile;
 

@@ -139,6 +139,6 @@ function validate_int($input, $max, $min = 0  )
 		update_post_meta($postID, 'autor_surname', $autor_surname);*/
 		update_post_meta($postID, 'autor_login', $autor_login);
 
-	} 	
-
+	}
+	
 ?>
