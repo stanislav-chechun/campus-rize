@@ -1822,8 +1822,25 @@ function rcl_add_message($args){
 
 add_filter('tab_data_rcl','edit_privat_tab_data');
 function edit_privat_tab_data($data){
-    if($data['id']!='privat') return $data;    
-    $data['name'] = 'Chat';
+    if($data['id']!='privat') return $data; 
+    $data['name'] = 'Chat'; 
+    $user = $_GET['user'];
+    global $current_user;
+	get_currentuserinfo();
+	if($current_user->ID!=$user){
+		$data['name'] = ''; 
+
+?>
+
+<style type="text/css">
+    #chat-inner-tabs a{
+    	display: none;
+    }
+</style>
+
+<?php
+
+	}
     return $data;
 }
 
