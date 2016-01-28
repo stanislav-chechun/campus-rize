@@ -11,7 +11,7 @@ Version:        0.1.0
 
  ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, body, html, div.paragraph, blockquote, fieldset, input, iframe, img { margin: 0; padding: 0; font-size:100%; border:0; }
  ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, body, html, p, blockquote, fieldset, input, iframe, img { margin: 0; padding: 0; font-size:100%; border:0; }
- a img { border: 0; }
+ a img { border: 0; } 
  body { line-height: 1; }
  input:focus, select:focus, textarea:focus, button:focus { outline: none; }
  @font-face { font-family: 'social-icons'; src:url('theme/images/social-icons.eot?-h6wei0?1448511627'); src:url('theme/images/social-icons.eot?#iefix-h6wei0?1448511627') format('embedded-opentype'), url('theme/images/social-icons.woff?-h6wei0?1448511627') format('woff'), url('theme/images/social-icons.ttf?-h6wei0?1448511627') format('truetype'), url('theme/images/social-icons.svg?-h6wei0#social-icons?1448511627') format('svg'); font-weight: normal; font-style: normal; }
