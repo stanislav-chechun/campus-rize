@@ -32,26 +32,32 @@ $number_donations = give_get_form_sales_stats( $form_id);
 $give_vimeo = get_post_meta($post->ID, 'vimeo', 1);
 $give_youtube = get_post_meta($post->ID, 'youtube', 1);
 
+// This is operation for display data in the get_student_thumbnail()
+$user_id = get_current_user_id($user_id);
+$user_data = get_userdata($user_id);
+//login data of the current user
+$author_login = $user_data->user_login;
+
+//Login data in meta data in the wish
+$login_wish  = get_post_meta( $form_id, 'autor_login', true );
+
+if($author_login === $login_wish){
+    $display_author_info = true;
+} else{ $display_author_info = false; }
 ?>
 <article id="post-<?php the_ID(); ?>">
     <div class="row">
         <div class="col-md-6 col-xs-12" id="photo-text">
-            <?php  echo $amount_goal . ' ' . $amount_have . ' ' . $width_bar; //////////
- echo '<pre>'; var_dump(get_post_meta($post->ID));  var_dump(get_post()); echo '</pre>';
+            <?php // echo $amount_goal . ' ' . $amount_have . ' ' . $width_bar; //////////
+ //echo '<pre>'; var_dump(get_post_meta($post->ID));  var_dump(get_post()); echo '</pre>';
             if ( $give_youtube !== ''){
                 //Check if video exist
                 $headers = get_headers('https://www.youtube.com/oembed?format=json&url=http://www.youtube.com/watch?v=' . $give_youtube);
                
                 if(is_array($headers) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$headers[0]) : false){
                 ?>    <iframe src="https://www.youtube.com/embed/<?php echo $give_youtube; ?>?rel=0" frameborder="0" rel="0" allowfullscreen></iframe>
-                <?php } else { //Создать функцию вывода однородных элементов и проверки на роль студента для извинений))
-                            ?> <h2>Sorry, but video-id is invalid on youtube.com</h2>
-                            <?php 
-                            if( has_post_thumbnail()){ 
-                                the_post_thumbnail();
-                            } else{?>
-                                <image src="<?php echo get_stylesheet_directory_uri(); ?>/images/student.jpg">
-                            <?php }
+                <?php } else { 
+                            get_student_thumbnail('youtube.com', $display_author_info);
                         }
             } 
             elseif ( $give_vimeo !== '') {
@@ -59,13 +65,7 @@ $give_youtube = get_post_meta($post->ID, 'youtube', 1);
                 if(is_array($headers) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$headers[0]) : false){
                 ?>    <iframe src="https://player.vimeo.com/video/<?php echo $give_vimeo; ?>?color=fff700&byline=0&portrait=0&badge=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 <?php } else {
-                            ?> <h2>Sorry, but video-id is invalid on vimeo.com</h2>
-                            <?php 
-                            if( has_post_thumbnail()){ 
-                                the_post_thumbnail();
-                                } else{?>
-                                <image src="<?php echo get_stylesheet_directory_uri(); ?>/images/student.jpg">
-                            <?php }
+                                get_student_thumbnail('vimeo.com', $display_author_info);
                             }?>
                     
             <?php } 
@@ -117,6 +117,6 @@ do_action( 'give_after_main_content' );
  *
  * @hooked give_get_sidebar - 10
  */
-do_action( 'give_sidebar' );
+//do_action( 'give_sidebar' );
 
 get_footer();

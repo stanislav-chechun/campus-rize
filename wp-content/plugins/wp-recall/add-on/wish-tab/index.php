@@ -128,7 +128,7 @@ function kp_process_create() {
                 $location_fail = get_bloginfo('url') . '/account/?user='. $user_id . '&tab=donation_form&kp-message=wish_void';
                 wp_redirect( $location_fail ); exit;
             }
-            //Доделать проверку целого значения
+            
             if(! validate_int( $_POST['goal_form'], 1000000 )){
                 $location_fail = get_bloginfo('url') . '/account/?user='. $user_id . '&tab=donation_form&int-message=goal_failed';
                 wp_redirect( $location_fail ); exit;
@@ -145,7 +145,7 @@ function kp_process_create() {
             
              // Создаем массив
     $post_data = array(
-	'post_title'    => $wish_title,
+	'post_title'    => wp_strip_all_tags($wish_title),
         'post_type'     => 'give_forms',
 	'post_content'  => '',
 	'post_status'   => 'draft',
