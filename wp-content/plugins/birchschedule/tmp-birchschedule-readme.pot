@@ -1,0 +1,712 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "BirchPress Scheduler - Appointment Booking &amp; Online Scheduling"
+msgstr ""
+
+#. Short description.
+msgid "BirchPress Scheduler is an appointment booking and online scheduling plugin that allows service businesses to take online appointment bookings."
+msgstr ""
+
+#. Screenshot description.
+msgid "Frontend booking form with a responsive theme"
+msgstr ""
+
+#. Screenshot description.
+msgid "Frontend booking form on Laptop"
+msgstr ""
+
+#. Screenshot description.
+msgid "Admin calendar view"
+msgstr ""
+
+#. Screenshot description.
+msgid "New appointment from admin"
+msgstr ""
+
+#. Screenshot description.
+msgid "Edit appointment from admin"
+msgstr ""
+
+#. Screenshot description.
+msgid "Multiple locations"
+msgstr ""
+
+#. Screenshot description.
+msgid "Staff settings"
+msgstr ""
+
+#. Screenshot description.
+msgid "Service settings"
+msgstr ""
+
+#. Screenshot description.
+msgid "Client info"
+msgstr ""
+
+#. Screenshot description.
+msgid "Currency and other settings"
+msgstr ""
+
+#. Found in description header.
+msgid "Features"
+msgstr ""
+
+#. Found in description header.
+msgid "Desired Businesses"
+msgstr ""
+
+#. Found in description header.
+msgid "Extra Features in Premium Editions"
+msgstr ""
+
+#. Found in description list item.
+msgid "Customer booking appointments for specific time in a day"
+msgstr ""
+
+#. Found in description list item.
+msgid "Optimize the booking form for responsive themes"
+msgstr ""
+
+#. Found in description list item.
+msgid "Support multiple locations"
+msgstr ""
+
+#. Found in description list item.
+msgid "Support multiple staff and services"
+msgstr ""
+
+#. Found in description list item.
+msgid "Configure service length, padding time and price"
+msgstr ""
+
+#. Found in description list item.
+msgid "Assign your employees to different services"
+msgstr ""
+
+#. Found in description list item.
+msgid "Powerful Admin Panel for booking / appointment management"
+msgstr ""
+
+#. Found in description list item.
+msgid "Easily embed booking form / calendar into a webpage with shortcode"
+msgstr ""
+
+#. Found in description list item.
+msgid "Show appointments / schedules in the daily, weekly or monthly view"
+msgstr ""
+
+#. Found in description list item.
+msgid "Easily add, edit or delete appointment in WP Admin"
+msgstr ""
+
+#. Found in description list item.
+msgid "Client Management"
+msgstr ""
+
+#. Found in description list item.
+msgid "Multiple-currency support"
+msgstr ""
+
+#. Found in description list item.
+msgid "Configure date and time format"
+msgstr ""
+
+#. Found in description list item.
+msgid "Set the first day of the week"
+msgstr ""
+
+#. Found in description list item.
+msgid "Track appointment payment history"
+msgstr ""
+
+#. Found in description list item.
+msgid "Supported languages: English, German, French, Dutch, Norwegian, Danish, Finnish, Spanish, Portuguese, Swedish"
+msgstr ""
+
+#. Found in description list item.
+msgid "Client scheduling (Beauty salon, Spa management, Hairdresser, Massage therapist, Acupuncture, Photographers,Personal Trainers, Wellness, Training Institutes, Sightseeing Services, Home Repair, Auto Repair, Tuition, Financial Services)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Meeting scheduling (Coaching, Phone advice, Consulting, Law Firms, Education)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Patient scheduling (Doctor, Clinic, Medical)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Auto fill info for existing customers in admin"
+msgstr ""
+
+#. Found in description list item.
+msgid "Email notifications to staff and clients when your client books an appointment"
+msgstr ""
+
+#. Found in description list item.
+msgid "Custom email messages with booking / appointment details"
+msgstr ""
+
+#. Found in description list item.
+msgid "Appointments reschedule and cancellation by customers"
+msgstr ""
+
+#. Found in description list item.
+msgid "Display staff appointments/bookings in different colors"
+msgstr ""
+
+#. Found in description list item.
+msgid "Custom booking form based on business needs(add custom fields about appointment or customer info, visible/invisible to admin and customers, required/not required)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Block busy time and holidays"
+msgstr ""
+
+#. Found in description list item.
+msgid "Page redirection after booking an appointment"
+msgstr ""
+
+#. Found in description list item.
+msgid "Returning user booking an appointment with email and password"
+msgstr ""
+
+#. Found in description list item.
+msgid "WP user integration"
+msgstr ""
+
+#. Found in description list item.
+msgid "Support minimum time requirement prior to booking"
+msgstr ""
+
+#. Found in description list item.
+msgid "Set how far in advance an appointment can be booked"
+msgstr ""
+
+#. Found in description list item.
+msgid "Set the length of time slot for each service"
+msgstr ""
+
+#. Found in description list item.
+msgid "Set booking availability/schedule for a specific time period"
+msgstr ""
+
+#. Found in description list item.
+msgid "Calendar Sync (iCal)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Group booking(accepting multiple clients on the same time slot)"
+msgstr ""
+
+#. Found in description list item.
+msgid "Add a 'no preference' option to the staff member dropdown list in the frontend booking form"
+msgstr ""
+
+#. Found in description list item.
+msgid "Support only showing available time slots when booking via WP Admin"
+msgstr ""
+
+#. Found in description list item.
+msgid "Create new WP roles and capabilities to manage access control for staff members"
+msgstr ""
+
+#. Found in description list item.
+msgid "Prepayment and PayPal Integration"
+msgstr ""
+
+#. Found in description list item.
+msgid "Authorize.net Integration"
+msgstr ""
+
+#. Found in description list item.
+msgid "WooCommerce Integration"
+msgstr ""
+
+#. Found in description list item.
+msgid "and much more coming soon"
+msgstr ""
+
+#. Found in description paragraph.
+msgid "BirchPress Scheduler is an appointment booking and online scheduling plugin that allows service businesses such as spas, yoga studios, contractors and photographers to take online appointment bookings. Merchants can embed a booking form in a page or post on the website, and customers can see service availability and book an appointment online directly. It is an effective tool to manage appointments and staffing schedules."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "There are more features supported in <a href=\"http://www.birchpress.com\" title=\"WordPress Appointment Plugin\">premium editions</a>."
+msgstr ""
+
+#. Found in description paragraph.
+msgid "Please visit <a href=\"http://www.birchpress.com\" title=\"WordPress Appointment Plugin\">our website</a> for more info, or try our online appointment booking <a href=\"http://www.birchpress.com/demo/\" title=\"BirchPress Scheduler Demo\">demo</a> with all features."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Download the plugin file to your computer and unzip it"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Using an FTP program, or your hosting control panel, upload the unzipped plugin folder to your WordPress installation's wp-content/plugins/ directory."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Activate the plugin from the Plugins menu within the WordPress admin."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Improve admin UI"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Forbid submitting form when pressing down the Enter key"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Use $wpdb-&gt;esc_like instead of like_escape"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Completely adopt wp admin styles."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Support Russian."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Improve UE when adding payments in the admin."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Jumping validation after submitting the form. Validation appears several times."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: NL po file is not translated correctly."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: use $wpdb-&gt;db_version instead of mysql_get_server_info to avoid warnings or errors."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: open ‘Edit Appointment’ page in a new browser tab by right clicking the appointment title in Admin calendar."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: remove the white part overlapping the menu of the dashboard on the left side."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: performance improvements on appointment editting."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: improve the performance of the admin calendar."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Disable the days which are fully booked in the booking form."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Require PHP 5.3 or above."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Implement some UI changes to improve user experience"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Support up to 10 languages: English, German, French, Dutch, Norwegian, Danish, Finnish, Spanish, Portuguese, Swedish"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Allow the administrator to modify service, location or duration when rescheduling appointments"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Support WordPress 4.0"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Conflict with other plugins which use the lessphp lib."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Make location and service editable when rescheduling at the backend."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "URGENT BUG FIX: staff and service setting can not be saved correctly."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: work around a PHP core related bug that exists in some versions of PHP"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: hide the additional text box in the booking form which is introduced in the version 1.7.1."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Implement a new UI of booking in WP Admin"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Add Polish translation file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Improve the plugin performance"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: fix the bug of double booking at same time slot on different locations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Support selectable provinces of Canada and several other countries."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Support BHD currency."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Support showing 'All' in location dropdown list in Admin calendar."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Fix the bug of deleting customers"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Refactoring code with the new architecture to make the plugin more flexible and extensible."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Update the German .po file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Support adding shortcode to a pageline section"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improvement: Delete ‘undefined’ text in front end dropdown list"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Customer’s name not updated in the calendar"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: WordPress 3.6 compatibilty bugs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: WP Admin appointments loading bugs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Fix some plugin conflicts"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Change staff member work schedule interval to 5 mins"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Compatible with WordPress 3.6"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Add ‘All’ view for locations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Support adding attributes to shortcode [bp-scheduler-bookingform] to filter the location, service and staff member options"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: translation of  frontend calendar"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Fix the corrupt language files."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Support Finnish"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Support United Arab Emirates Dirham currency (AED)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Support adding booking form to the sidebar widget"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Fix a timezone related bug"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: The location field are shown again when there is only one option. This bug is introduced in 1.5.5.1."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Some plugins or themes replace line breaks with <br /> tags in the shortcode, which messes up the booking form."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Optimize the booking form for responsive themes."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Support French."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Hide the service field in the booking form when there is only one option."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Hide the service provider field in the booking form when there is only one option."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Admin can select existing clients when adding appointments."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Add payment histroy tracking"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Redesign the booking form to improve usability."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Admin can change the duration of the appointment."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: Hide location when there is only one."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update select2 lib to make the booking form compatible to some themes."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update translation files"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: translation related bugs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: services can not be assigned to staff if services are too many"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Enhancement: try to resolve 'open_basedir restriction in effect' problem"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add Hungry support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update Spanish and Spanish Chile"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: Fix confliction with other plugins."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: javascript errors happen when staff select box is empty"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: time options is empty if the end time of work schedule is 11:45pm"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "remove some warnings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "More flexible work schedule settings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Use select2 library to improve user experiences"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Set first day of the week"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix some translation bugs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Sort services by alphabetical order"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Remove hyphens if the service price type is \"don't show\""
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add Turkish lira and South Africa rand support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Users with editor role can change business settings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "IMPORTANT: remove unnessary time availability check in the admin calendar"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "CRITICAL: Version 1.3.4 is a bad build. Please update to 1.3.5"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Show update notices"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix a display bug of showing time options in the frontend"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Validate email when saving in the client editing view"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add waiting message when client booking"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Support date and time format settings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Bug Fix: confirmation datetime is incorrect"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Support Glider-like themes"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "change css rules to be compatible with more themes."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "change the booking form design"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Improve usability of the booking form with calendar view"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Blocking to select date in the past"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Compatible with WordPress 3.5 now"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "change several css class names in the booking form to avoid conflicting with some themes."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "change permission level"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Dutch support (Thanks to Edwin ten Brink)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix the admin menu disappeared bug"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix some other bugs"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "BirchSchedule is now BirchPress Scheduler"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix a shortcode rendering bug"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Shortcode [birchschedule_bookingform] is deprecated and replaced by [bp-scheduler-bookingform]"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "clean some notices and warnings."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Multi-currency support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Timezone support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add translation files to support i18n"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix the padding time bug"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Filter staff by locations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix a deletion bug."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix the bug that only five staff are shown in the staff list."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Fix the bug that pages containing escape booking form shortcode render unneeded scripts."
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Init release."
+msgstr ""
+
+#. Found in faq header.
+msgid "How can I embed the booking form into a post/page?"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"To embed the booking form into a post/page, just insert the following shortcode:\n"
+"[bpscheduler_booking_form]"
+msgstr ""
