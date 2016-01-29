@@ -1116,7 +1116,7 @@ div#container div#content article div.progress{
 }
 
 .cabinet-front-page p {
-	font-size: 14px;
+	font-size: 15px;
 	padding: 20px;
 }
 
@@ -1137,7 +1137,7 @@ div#container div#content article div.progress{
 }
 
 .cabinet-front-page div.authorize-form-rcl {
-	margin-top: 30px;
+	margin-top: 50px;
 }
 
 .cabinet-front-page div.authorize-form-rcl div.username {
@@ -1158,6 +1158,7 @@ div#container div#content article div.progress{
 
 .cabinet-wrap h4 {
 	text-align: center;
+	color: #000;
 }
 
 /* end new changes */
