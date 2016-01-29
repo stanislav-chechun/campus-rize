@@ -127,5 +127,9 @@ jQuery( document ).ready(function() {
 		items : 4,
 		stopOnHover : true,
 	});
+	
+	current_h = jQuery(".cabinet-front-page").height();
+	add_h = jQuery(document).height() - jQuery("#page").height();	
+	jQuery(".cabinet-front-page").css("min-height", current_h + add_h);
 
 });
