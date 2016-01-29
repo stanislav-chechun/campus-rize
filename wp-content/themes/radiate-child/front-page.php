@@ -74,7 +74,7 @@ get_header(); ?>
 		if ( $posts->have_posts() ) {
 	?>
 
-	<div class="content-wrap">
+	<div class="content-wrap stages-wrap">
 		<hr class="styled-hr">
 		<div class="row">
 
