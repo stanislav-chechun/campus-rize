@@ -51,31 +51,19 @@ if($author_login === $login_wish){
             <?php // echo $amount_goal . ' ' . $amount_have . ' ' . $width_bar; //////////
  //echo '<pre>'; var_dump(get_post_meta($post->ID));  var_dump(get_post()); echo '</pre>';
             if ( $give_youtube !== ''){
-                //Check if video exist
-                $headers = get_headers('https://www.youtube.com/oembed?format=json&url=http://www.youtube.com/watch?v=' . $give_youtube);
-               
-                if(is_array($headers) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$headers[0]) : false){
-                ?>    <iframe src="https://www.youtube.com/embed/<?php echo $give_youtube; ?>?rel=0" frameborder="0" rel="0" allowfullscreen></iframe>
-                <?php } else { 
-                            get_student_thumbnail('youtube.com', $display_author_info);
-                        }
+                //Check if video exist and output it or standart image
+               echo display_youtube_video($give_youtube, $display_author_info);
             } 
             elseif ( $give_vimeo !== '') {
-                $headers = get_headers('http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/' . $give_vimeo);
-                if(is_array($headers) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$headers[0]) : false){
-                ?>    <iframe src="https://player.vimeo.com/video/<?php echo $give_vimeo; ?>?color=fff700&byline=0&portrait=0&badge=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                <?php } else {
-                                get_student_thumbnail('vimeo.com', $display_author_info);
-                            }?>
-                    
-            <?php } 
+                echo display_vimeo_video($give_vimeo, $display_author_info);
+            } 
             elseif ( $give_youtube == '' && $give_vimeo == '' && has_post_thumbnail()) {
                
-                    the_post_thumbnail();  
+                the_post_thumbnail();  
                
-            } else{ ?>
-               <image src="<?php echo get_stylesheet_directory_uri(); ?>/images/student.jpg">
-            <?php }?>
+            } else{ 
+                echo get_student_thumbnail(false, $display_author_info);
+            }?>
         </div>
         <div class="col-md-6 col-xs-12" id="post-text">
             <div id="parent-form">

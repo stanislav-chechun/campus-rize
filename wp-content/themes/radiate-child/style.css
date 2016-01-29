@@ -1008,6 +1008,11 @@ div#container div#content article div#social ul.horizontal li{
 div#container div#content article div.progress{
 	border-radius: 25px;
 }
+
+div#mentor_tab div#video_mentor iframe{
+	width: 515px;
+    height: 344px;
+} 
 /* Pavel*/
 /* Anjela (new changes)*/
 

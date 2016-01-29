@@ -62,6 +62,120 @@ function give_video_update( $post_id ){
 	return $post_id;
 }
 
+//For displaying youtube video
+//Check if video exist and output it or standart image
+function display_youtube_video($video_id, $display_author_info){
+    $headers = get_headers('https://www.youtube.com/oembed?format=json&url=http://www.youtube.com/watch?v=' . $video_id);
+    if(is_array($headers) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$headers[0]) : false){
+        $result = '<iframe src="https://www.youtube.com/embed/' . $video_id .'?rel=0" frameborder="0" rel="0" allowfullscreen></iframe>';
+    } else { 
+        $result = get_student_thumbnail('youtube.com', $display_author_info);
+            }
+    return $result;
+}
+
+function display_vimeo_video($video_id, $display_author_info){
+    $headers = get_headers('http://vimeo.com/api/oembed.json?url=http%3A//vimeo.com/' . $video_id);
+    if(is_array($headers) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$headers[0]) : false){
+        $result = '<iframe src="https://player.vimeo.com/video/' . $video_id . '?color=fff700&byline=0&portrait=0&badge=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+    } else {
+        $result = get_student_thumbnail('vimeo.com', $display_author_info);
+    }
+    
+    return $result;   
+}
+
+
+//Test for create role Mentor
+add_role(
+	'mentor', __('Mentor'),
+	array(
+		'read'         => true,  // true разрешает эту возможность
+		'edit_posts'   => false,  // true разрешает редактировать посты
+		'delete_posts' => false, // false запрещает удалять посты
+                'upload_files' => false,
+	)
+);
+
+//Add metabox for mentor profile in the admin bar
+add_filter('user_contactmethods', 'mentor_contactmethods',44);
+ 
+function mentor_contactmethods($user_contactmethods){
+ 
+  $user_contactmethods['youtube_mentor'] = 'Youtube video ID';
+  $user_contactmethods['vimeo_mentor'] = 'Vimeo video ID';
+ 
+  return $user_contactmethods;
+}
+
+//Add metabox for student profile in the admin bar for assign mentor
+
+/**
+ * Add additional custom fields to profile page
+ */
+
+add_action ( 'show_user_profile', 'kp_show_extra_mentor' );
+add_action ( 'edit_user_profile', 'kp_show_extra_mentor' );
+
+function kp_show_extra_mentor ( $user ) {
+?>
+        <?php 
+        $user_data = get_userdata($user->ID);
+        // Must remove admin from this!!!!!!!!
+        if(is_admin()){
+        if( $user_data->has_cap('student') || $user_data->has_cap('administrator')){
+       
+        ?>
+	<h3><?php _e( 'Select Mentor for that student');?></h3>
+	
+	<table class="form-table">
+            <tr>
+		<th><label for="list_mentor"><?php _e( 'Mentors' ); ?></label></th>
+		<td>
+		<?php $value = get_the_author_meta( 'mentor_for_student', $user->ID );
+                          $mentor_users = get_users('role=mentor');?>
+                    <select name="list_mentor" id="list_mentor">
+                        <?php foreach ($mentor_users as $mentor) {
+
+                                ?> <option value="<?php echo $mentor->ID ;?>" <?php selected( $value, $mentor->ID ); ?> ><?php echo $mentor->user_nicename;?></option><?php
+                            }
+
+                            ?>
+                    </select>
+		</td>
+		
+            </tr>
+		<?php // end of chunk ?>
+		
+	</table>
+
+<?php
+        }
+    }
+}
+
+/**
+ * Save data input from custom field on profile page
+ */
+
+add_action ( 'personal_options_update', 'kp_save_extra_mentor' );
+add_action ( 'edit_user_profile_update', 'kp_save_extra_mentor' );
+
+function kp_save_extra_mentor( $user_id ) {
+    if(is_admin()){
+        if( isset( $_POST['list_mentor'] )){
+            if ( !current_user_can( 'edit_user', $user_id ) )
+                    return false;		
+            // copy this line for other fields
+            update_user_meta( $user_id, 'mentor_for_student', $_POST['list_mentor'] );
+        }
+    
+    }
+}
+
+
+/// End Add metabox for student profile in the admin bar for assign mentor
+
 //Validate numbers
 function validate_int($input, $max, $min = 0  )
 {
@@ -73,7 +187,26 @@ function validate_int($input, $max, $min = 0  )
       'options' => array('min_range' => $min, 'max_range' => $max)
     )
   );
-}   
+}
+
+//View thumbnail in give donation youtube.com
+function get_student_thumbnail($video_source, $display_author_info){
+    if( $video_source == false){
+        $display_author_info = false;
+    }
+    
+    $result = '';
+    if( $display_author_info == true){
+        $result .= '<h2>' . __('Sorry, but video-id is invalid on ') . $video_source . '</h2>';
+    } 
+    if( has_post_thumbnail()){ 
+        $result .= get_the_post_thumbnail();
+    } else{
+        $result .= ' <image src="' . get_stylesheet_directory_uri(). '/images/student.jpg">';
+    }
+    
+    return $result;
+}
         //Pavel
 
 
