@@ -1169,4 +1169,13 @@ div#mentor_tab div#video_mentor iframe{
 	color: #000;
 }
 
+.profession {
+	border-bottom: 1px solid #ccc;
+	padding: 15px;
+}
+
+.profession:last-child {
+	border-bottom: none;
+}
+
 /* end new changes */
