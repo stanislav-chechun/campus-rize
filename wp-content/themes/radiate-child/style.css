@@ -1122,6 +1122,9 @@ div#mentor_tab div#video_mentor iframe{
 
 .cabinet-front-page p {
 	font-size: 15px;
+}
+
+.cabinet-front-page > div > p {
 	padding: 20px;
 }
 
@@ -1137,9 +1140,9 @@ div#mentor_tab div#video_mentor iframe{
 	text-align: left;
 }
 
-.cabinet-front-page i.fa {
+/*.cabinet-front-page i.fa {
 	display: none;
-}
+}*/
 
 .cabinet-front-page div.authorize-form-rcl {
 	margin-top: 50px;
