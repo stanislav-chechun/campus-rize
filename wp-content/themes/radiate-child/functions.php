@@ -273,5 +273,75 @@ function get_student_thumbnail($video_source, $display_author_info){
 		update_post_meta($postID, 'autor_login', $autor_login);
 
 	}
+
+	add_action('init', 'register_professional_network');
+
+	function register_professional_network(){
+		$args = array(
+			'label'  => null,
+			'labels' => array(
+				'name'               => 'Professions',
+				'singular_name'      => 'Profession',
+				'add_new'            => 'Add New',
+				'add_new_item'       => 'Add New Profession',
+				'menu_name'          => 'Professional Network',
+			),
+			'public'              => true,
+			'menu_position'       => 4,
+			'supports'            => array('title', 'editor', 'thumbnail'),
+			'register_meta_box_cb'=> 'profession_meta_add',
+		);
+
+		register_post_type('professions', $args );
+	}
 	
+	function profession_meta_add() { 
+		add_meta_box('profession_meta_add', 'General Information', 'profession_meta_showup', 'professions', 'normal', 'high'); 
+	} 
+
+	function profession_meta_showup( $post ) { 
+		?>
+		<form action="" method="post">
+
+			<p>Industry</p>
+			<input type="text" name="prof_industry" value="<?php echo get_post_meta($post->ID, 'prof_industry', 1); ?>" style="width:100%" />
+
+			<p>Location</p>
+			<input type="text" name="prof_location" value="<?php echo get_post_meta($post->ID, 'prof_location', 1); ?>" style="width:100%" />
+
+			<p>E-mail</p>
+			<input type="email" name="prof_email" value="<?php echo get_post_meta($post->ID, 'prof_email', 1); ?>" style="width:100%" />
+
+			<p>Phone <br />(format: +XX (XXX) XXX-XX-XX)</p>
+			<input type="text" name="prof_tel" pattern="\+[0-9]{2} \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}" value="<?php echo get_post_meta($post->ID, 'prof_tel', 1); ?>" style="width:100%" />			
+
+		</form>
+		<?php
+	} 
+
+	add_action('save_post', 'profession_meta_save'); 
+
+	function profession_meta_save($postID) { 
+
+		if (!isset($_POST['prof_industry']))
+		return; 
+
+		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) 
+		return; 
+
+		if (wp_is_post_revision($postID)) 
+		return; 
+
+		$prof_industry    = sanitize_text_field($_POST['prof_industry']);
+		$prof_email    = sanitize_text_field($_POST['prof_email']);
+		$prof_tel    = sanitize_text_field($_POST['prof_tel']);
+		$prof_location    = sanitize_text_field($_POST['prof_location']);
+
+		update_post_meta($postID, 'prof_industry', $prof_industry);
+		update_post_meta($postID, 'prof_email', $prof_email);
+		update_post_meta($postID, 'prof_tel', $prof_tel);
+		update_post_meta($postID, 'prof_location', $prof_location);
+
+	}
+
 ?>
