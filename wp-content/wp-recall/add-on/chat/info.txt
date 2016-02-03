@@ -1,5 +1,5 @@
 Name: Chat;
 Version: 1.0;
-Support Core: 13.8.19;
 Description: addition to wp-recall plugin which create new tab "Chat" in user cabinet;
-Author: Anjela Pavlushenko, Plechev Andrey;
+Support Core: 13.8.19;
+Author: Anjela Pavlushenko;
