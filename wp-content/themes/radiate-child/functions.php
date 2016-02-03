@@ -332,15 +332,100 @@ function get_student_thumbnail($video_source, $display_author_info){
 		if (wp_is_post_revision($postID)) 
 		return; 
 
-		$prof_industry    = sanitize_text_field($_POST['prof_industry']);
+		$prof_industry = sanitize_text_field($_POST['prof_industry']);
 		$prof_email    = sanitize_text_field($_POST['prof_email']);
-		$prof_tel    = sanitize_text_field($_POST['prof_tel']);
-		$prof_location    = sanitize_text_field($_POST['prof_location']);
+		$prof_tel      = sanitize_text_field($_POST['prof_tel']);
+		$prof_location = sanitize_text_field($_POST['prof_location']);
 
 		update_post_meta($postID, 'prof_industry', $prof_industry);
 		update_post_meta($postID, 'prof_email', $prof_email);
 		update_post_meta($postID, 'prof_tel', $prof_tel);
 		update_post_meta($postID, 'prof_location', $prof_location);
+
+	}
+
+	add_action('init', 'register_team');
+
+	function register_team(){
+		$args = array(
+			'label'  => null,
+			'labels' => array(
+				'name'               => 'Team',
+				'singular_name'      => 'Team Member',
+				'add_new'            => 'Add New',
+				'add_new_item'       => 'Add New Team Member',
+				'menu_name'          => 'Team',
+			),
+			'public'              => true,
+			'menu_position'       => 5,
+			'supports'            => array('title', 'editor', 'thumbnail'),
+			'register_meta_box_cb'=> 'team_meta_add',
+		);
+
+		register_post_type('team', $args );
+	}
+	
+	function team_meta_add() { 
+		add_meta_box('team_meta_add', 'Personal Information', 'team_meta_showup', 'team', 'normal', 'high'); 
+	} 
+
+	function team_meta_showup( $post ) { 
+		?>
+		<form action="" method="post">
+
+			<p>Name</p>
+			<input type="text" name="tm_name" value="<?php echo get_post_meta($post->ID, 'tm_name', 1); ?>" style="width:100%" />
+
+			<p>Surname</p>
+			<input type="text" name="tm_surname" value="<?php echo get_post_meta($post->ID, 'tm_surname', 1); ?>" style="width:100%" />
+
+			<p>Position</p>
+			<input type="text" name="tm_position" value="<?php echo get_post_meta($post->ID, 'tm_position', 1); ?>" style="width:100%" />
+
+			<p>E-mail</p>
+			<input type="email" name="tm_email" value="<?php echo get_post_meta($post->ID, 'tm_email', 1); ?>" style="width:100%" />
+
+			<p>LinkedIn</p>
+			<input type="text" name="tm_linkedIn" value="<?php echo get_post_meta($post->ID, 'tm_linkedIn', 1); ?>" style="width:100%" />
+
+			<p>Facebook</p>
+			<input type="text" name="tm_facebook" value="<?php echo get_post_meta($post->ID, 'tm_facebook', 1); ?>" style="width:100%" />			
+
+		</form>
+		<?php
+	} 
+
+	add_action('save_post', 'team_meta_save'); 
+
+	function team_meta_save($postID) { 
+
+		if (!isset($_POST['tm_name'])
+			&& !isset($_POST['tm_surname'])
+			&& !isset($_POST['tm_position'])
+			&& !isset($_POST['tm_email'])
+			&& !isset($_POST['tm_linkedIn'])
+			&& !isset($_POST['tm_facebook']))
+		return; 
+
+		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) 
+		return; 
+
+		if (wp_is_post_revision($postID)) 
+		return; 
+
+		$tm_name     = sanitize_text_field($_POST['tm_name']);
+		$tm_surname  = sanitize_text_field($_POST['tm_surname']);
+		$tm_position = sanitize_text_field($_POST['tm_position']);
+		$tm_email    = sanitize_text_field($_POST['tm_email']);
+		$tm_linkedIn = sanitize_text_field($_POST['tm_linkedIn']);
+		$tm_facebook = sanitize_text_field($_POST['tm_facebook']);
+
+		update_post_meta($postID, 'tm_name', $tm_name);
+		update_post_meta($postID, 'tm_surname', $tm_surname);
+		update_post_meta($postID, 'tm_position', $tm_position);
+		update_post_meta($postID, 'tm_email', $tm_email);
+		update_post_meta($postID, 'tm_linkedIn', $tm_linkedIn);
+		update_post_meta($postID, 'tm_facebook', $tm_facebook);
 
 	}
 
