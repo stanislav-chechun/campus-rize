@@ -1178,4 +1178,12 @@ div#mentor_tab div#video_mentor iframe{
 	border-bottom: none;
 }
 
+.ballun-status {
+	display: none;
+}
+
+.text-page-wrapper {
+	padding-top: 50px;
+}
+
 /* end new changes */
