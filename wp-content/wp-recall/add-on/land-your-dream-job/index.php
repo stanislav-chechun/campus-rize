@@ -30,7 +30,7 @@ add_action('init','add_tab_land_your_dream_job');
 									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">';
 
 				if ( has_post_thumbnail() ) { 
-					$profession .= the_post_thumbnail(); 
+					$profession .= get_the_post_thumbnail(); 
 				} 
 				else {
 					$profession .='<img src="'.get_home_url().'/wp-content/uploads/2016/01/no_photo.png" alt="">';
