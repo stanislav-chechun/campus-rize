@@ -1186,4 +1186,9 @@ div#mentor_tab div#video_mentor iframe{
 	padding-top: 50px;
 }
 
+.tm-caption {
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
 /* end new changes */
