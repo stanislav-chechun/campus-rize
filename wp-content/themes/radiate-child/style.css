@@ -1187,8 +1187,68 @@ div#mentor_tab div#video_mentor iframe{
 }
 
 .tm-caption {
-	border: 1px solid #ccc;
 	text-align: center;
+}
+
+.team img {
+	width: 100%;
+}
+
+.tm-caption p:first-child {
+	font-weight: bold;
+	font-size: 20px;
+	margin: 0;
+}
+
+.tm-main div.tm-caption p:first-child {
+	font-size: 24px;
+}
+
+.tm-caption p:nth-child(2) {
+	color: #808080;
+	margin: 0 0 5px;
+	font-size: 12.5px;
+}
+
+.tm-main div.tm-caption p:nth-child(2) {
+	font-size: 16px;
+}
+
+.tm-story {
+	display: none;
+	text-align: justify;
+	font-size: 12.5px;
+}
+
+.tm-story p {
+	margin: 0 0 5px;
+}
+
+.tm-follow {
+	text-align: center;
+	padding-bottom: 30px;
+}
+
+.tm-follow p:first-child {
+	text-transform: uppercase;
+	margin: 0 0 5px;
+	padding: 0 0 5px;
+	border-bottom: 1px solid #ccc;
+	color: #A6A6A6;
+	font-weight: bold;
+}
+
+.wwa-content p {
+	font-size: 14px;
+}
+
+.wwa-content h1,
+.wwa-content h2,
+.wwa-content h3 {
+	font-size: 20px;
+	background: #FAFAFA;
+	padding: 10px;
+	text-transform: uppercase;
 }
 
 /* end new changes */
