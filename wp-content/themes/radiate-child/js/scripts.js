@@ -132,4 +132,12 @@ jQuery( document ).ready(function() {
 	add_h = jQuery(document).height() - jQuery("#page").height();	
 	jQuery(".cabinet-front-page").css("min-height", current_h + add_h);
 
+	jQuery(".team").hover(	  
+	  function() {
+	    jQuery(this).find(".tm-story").slideDown(500);
+	  }, function() {
+	    jQuery(this).find(".tm-story").slideUp(300);
+	  }
+	);
+
 });
