@@ -1251,4 +1251,48 @@ div#mentor_tab div#video_mentor iframe{
 	text-transform: uppercase;
 }
 
+/* cabinet new styles */
+
+/*.wprecallblock #lk-conteyner .lk-sidebar {
+	float: none;
+}
+
+.wprecallblock #lk-menu.left-buttons {
+	float: none;
+}
+
+#lk-content {
+	width: 80%;
+	float: right;
+}*/
+
+.wprecallblock {
+	border: none;
+}
+
+.wprecallblock #lk-menu.left-buttons a {
+	width: 100%;
+}
+
+.lk-content {
+	margin: 10px;
+}
+
+#lk-menu .lk-content p {
+	margin-top: 0;
+}
+
+#lk-menu .lk-content h2 {
+	margin: 0;
+}
+
+#rcl-contayner-avatar img {
+	width: 100%;
+	margin: 0 0 5px;
+}
+
+#lk-menu .lk-content {
+	text-align: center;
+}
+
 /* end new changes */
