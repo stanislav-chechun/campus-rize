@@ -29,7 +29,7 @@ function rcl_get_grouplist($atts){
         return $content;
     }
 
-    $content .= '<div class="rcl-grouplist">';
+    $content .= '<div class="rcl-grouplist row">';
 
     foreach($groupsdata as $rcl_group){ $list->setup_groupdata($rcl_group);
         $content .= rcl_get_include_template('group-list.php',__FILE__);
