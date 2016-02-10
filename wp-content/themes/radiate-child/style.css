@@ -1097,7 +1097,7 @@ div#mentor_tab div#video_mentor iframe{
 
 #chat-inner-tabs {
 	display: none;
-	margin-top: 20px;
+	/*margin-top: 20px;*/
 	text-align: left;
 }
 
@@ -1275,7 +1275,7 @@ div#mentor_tab div#video_mentor iframe{
 }
 
 .lk-content {
-	margin: 10px;
+	margin: 15px;
 }
 
 #lk-menu .lk-content p {
@@ -1288,11 +1288,104 @@ div#mentor_tab div#video_mentor iframe{
 
 #rcl-contayner-avatar img {
 	width: 100%;
-	margin: 0 0 5px;
+	margin: 15px 0 5px;
 }
 
 #lk-menu .lk-content {
 	text-align: center;
+}
+
+.wprecallblock #lk-content > div {
+	border: none;
+}
+
+.panel_lk_recall .buttons p {
+    margin: 2px 0px;
+    padding: 0;
+}
+
+#tab-profile h3 {
+	display: none;
+}
+
+#your-profile {
+	margin-top: -20px;
+}
+
+#your-profile table tr th {
+	width: 17%;
+	text-align: right !important;
+}
+
+#your-profile table, #your-profile tr, #your-profile th, #your-profile td {
+	border: 0 !important;
+	border-collapse: collapse;
+}
+
+#your-profile small {
+	display: none;
+}
+
+.wprecallblock #lk-menu a.active, #lk-content div.buttons-navi a.sec_block_button.active, #chat-inner-tabs a.recall-button.block_button.active {
+	background: #383838;
+	text-decoration: none;
+}
+
+#chat-inner-tabs a.recall-button.block_button.active span {
+	color: #fff;
+}
+
+.wprecallblock #lk-menu a, #lk-content div.buttons-navi a.sec_block_button, #chat-inner-tabs a.recall-button.block_button {
+	border: 1px solid #383838;
+	color: #383838;
+	background: #fff;
+}
+
+#your-profile table input, #your-profile table textarea {
+	max-width: none;
+	border-radius: 0;
+	background: #FAFAFA;
+	border: 0;
+}
+
+#pass1 {
+    margin-bottom: 3px;
+}
+
+#chat-inner-tabs {
+	padding: 5px 0;
+	margin-top: 10px;
+}
+
+#chat-inner-tabs span.rcl-tab-button {
+	margin-right: 3px;
+}
+
+.userlist.avatars-list .user-single {
+    margin: 5px 35px 0 -10px;
+}
+
+#lk-menu {
+	margin-right: 30px;
+}
+
+.rcl-grouplist .single-group {
+	clear: none;
+}
+
+#lk-content div.buttons-navi a.sec_block_button {
+	border: none;
+	color: #8F8F8F;
+}
+
+#lk-content div.buttons-navi a.sec_block_button:focus {
+	outline: none;
+}
+
+#lk-content div.buttons-navi a.sec_block_button.active {
+	background: none;
+	color: #383838;
+	border-bottom: 1px solid #383838;
 }
 
 /* end new changes */
