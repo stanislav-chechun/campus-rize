@@ -69,14 +69,21 @@
 
             <?php rcl_buttons(); ?>
         </div>
-        <div id="chat-inner-tabs">
+        <!--<div id="chat-inner-tabs">
+            <?php 
+                //echo rcl_get_button_tab(array('name'=>'Contacts','id_tab'=>'contacts'));
+                //echo rcl_get_button_tab(array('name'=>'Groups','id_tab'=>'groups'));
+                //echo rcl_get_button_tab(array('name'=>'History','id_tab'=>'privat'));  
+            ?>
+        </div>-->
+        <div id="lk-content" class="rcl-content">
+            <div id="chat-inner-tabs">
             <?php 
                 echo rcl_get_button_tab(array('name'=>'Contacts','id_tab'=>'contacts'));
                 echo rcl_get_button_tab(array('name'=>'Groups','id_tab'=>'groups'));
                 echo rcl_get_button_tab(array('name'=>'History','id_tab'=>'privat'));  
             ?>
         </div>
-        <div id="lk-content" class="rcl-content">
             <?php rcl_tabs(); ?>
         </div>
     </div>
