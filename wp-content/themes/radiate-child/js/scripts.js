@@ -96,9 +96,9 @@ jQuery( document ).ready(function() {
        jQuery("#chat-inner-tabs").css("display", "none");
     });	
 
-	//jQuery("#chat-inner-tabs a").click(function(){
-       //jQuery("#tab-button-chat a").addClass("active");
-    //});
+	jQuery("#chat-inner-tabs a").click(function(){
+       jQuery("#lk-menu #tab-button-privat a").addClass("active");
+    });
 
     jQuery("#tab-button-privat a").click(function(){
        jQuery("#chat-inner-tabs").css("display", "block");
@@ -112,15 +112,7 @@ jQuery( document ).ready(function() {
     if (jQuery("#chat-inner-tabs a").hasClass("active")){
     	jQuery("#chat-inner-tabs").css("display", "block");
     	jQuery("#lk-menu span:nth-child(2) a").addClass("active");
-    }
-
-    jQuery("#chat-inner-tabs a").click(function(){
-       jQuery("#lk-menu span:nth-child(2) a").addClass("active");
-       //jQuery("#tab-button-privat a").addClass("active");
-    });
-
-	
-	//jQuery("#carousel-wishes div.item:first-child").addClass("active");
+    }    
 	
 	jQuery(".owl-carousel").owlCarousel({
 		autoPlay : true,		
@@ -139,5 +131,7 @@ jQuery( document ).ready(function() {
 	    jQuery(this).find(".tm-story").slideUp(300);
 	  }
 	);
+
+	jQuery("input[type='submit']").addClass("wsite-button");
 
 });
