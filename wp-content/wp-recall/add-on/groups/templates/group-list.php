@@ -1,5 +1,5 @@
 <?php global $rcl_group; ?>
-<div class="single-group">
+<div class="single-group col-md-4 col-sm-6 col-xs-12">
     <div class="group-avatar">
         <a href="<?php rcl_group_permalink(); ?>">
             <?php rcl_group_thumbnail(array(100,100)); ?>
