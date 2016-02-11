@@ -1352,14 +1352,16 @@ div#mentor_tab div#video_mentor iframe{
 }
 
 #your-profile table input, #your-profile table textarea,
-#results input, #results textarea {
+#results input, #results textarea,
+#wish_table input, #wish_table textarea {
 	max-width: none;
 	border-radius: 0;
 	background: #FAFAFA;
 	border: 0;
 }
 
-#results input, #results textarea {
+#results input, #results textarea,
+#wish_table input, #wish_table textarea {
 	box-shadow: none;
 }
 
@@ -1411,22 +1413,24 @@ div#mentor_tab div#video_mentor iframe{
 	padding-top: 90px;
 }
 
-#wish_table_edit label {
+#wish_table_edit label, #wish_table label {
 	font-weight: bold;
 }
 
-#image_form_edit {
+#image_form_edit, #image_form {
 	padding: 0;
 }
 
-#results input.wsite-button {
+#results input.wsite-button,
+#wish_table input.wsite-button {
 	border: 1px solid #383838 !important;
 	float: right;
 	padding: 1.35em 3em;
 	margin: 0 4px; 
 }
 
-#results input.wsite-button-white {
+#results input.wsite-button-white,
+#wish_table input.wsite-button-white {
 	font-size: .92em; 
 	padding: 1.35em 3em; 
 	color: #383838; 

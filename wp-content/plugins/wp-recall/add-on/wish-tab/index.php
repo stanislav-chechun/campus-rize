@@ -105,8 +105,10 @@ function form_donation_block($user_lk){
 
                 $html .= '<input type="hidden" name="kp_wish" value="process_kp_wish"/>';
                 $html .=  wp_nonce_field('kp_nonce', 'kp_nonce');
-                $html .= '<p><input class="btn btn-default" type="submit" value="Create">';
-                $html .= '<input class="btn btn-default" type="reset" value="Reset"></p>';
+                //$html .= '<p><input class="btn btn-default" type="submit" value="Create">';
+                //$html .= '<input class="btn btn-default" type="reset" value="Reset"></p>';
+                $html .= '<input class="wsite-button-white" type="reset" value="Reset">';
+                $html .= '<input class="wsite-button" type="submit" value="Create">';
             $html .= '</form>'; 
             
     

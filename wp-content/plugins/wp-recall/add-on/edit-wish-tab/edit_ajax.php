@@ -74,8 +74,6 @@ if( isset($_POST['wish_id'])){
                 $html .= '<input type="hidden" name="kp_wish_edit" value="process_kp_wish"/>';
                 $html .= '<input type="hidden" name="post_id_edit" value="' . $post_id . '"/>';
                 $html .=  wp_nonce_field('kp_nonce', 'kp_nonce');
-                //$html .= '<p><input class="wsite-button" type="submit" value="Update">';
-                //$html .= '<input class="wsite-button" type="reset" value="Reset"></p>';
                 $html .= '<input class="wsite-button-white" type="reset" value="Reset">';
                 $html .= '<input class="wsite-button" type="submit" value="Update">';
             $html .= '</form>'; 
