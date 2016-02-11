@@ -43,8 +43,9 @@ function edit_recall_block($user_lk){
           
             $html .= '<tr><td><a href="' . get_permalink() . '">' . get_the_title() . '</a></td>';
             $html .= '<td>' . $percentage . '%' . '</td>';
-            $html .= '<td>' . '<button name="wish_id" id="wish_id" type="button" class="btn btn-primary btn-lg btn-block wish_id" value="' . $form_id . '">' . 
-                        'Edit this wish' . '</button>' . '</td>';
+            //$html .= '<td>' . '<a href="#results"><button name="wish_id" id="wish_id" type="button" class="btn btn-primary btn-lg btn-block wish_id" value="' . $form_id . '">' . 
+            $html .= '<td>' . '<a href="#results"><button name="wish_id" id="wish_id" type="button" class="btn btn-lg btn-block wish_id" value="' . $form_id . '">' .          
+                        'Edit this wish' . '</button></a>' . '</td>';
                 
                 $html .=  '</tr>';
         }

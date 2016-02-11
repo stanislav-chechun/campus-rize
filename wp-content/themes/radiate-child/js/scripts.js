@@ -132,6 +132,13 @@ jQuery( document ).ready(function() {
 	  }
 	);
 
-	jQuery("input[type='submit']").addClass("wsite-button");
+	jQuery("input[type='submit'], .wish_id").addClass("wsite-button");
+
+	jQuery('a[href="#results"]').click( function(){ 
+	    var scroll_el = jQuery(this).attr('href');
+        if (jQuery(scroll_el).length != 0) {
+	    	jQuery('html, body').animate({ scrollTop: jQuery(scroll_el).offset().top }, 500);
+        }
+    });
 
 });
