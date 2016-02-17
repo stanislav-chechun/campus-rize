@@ -1383,7 +1383,7 @@ div#mentor_tab div#video_mentor iframe{
 }
 
 #lk-menu {
-	margin-right: 30px;
+	margin-right: 20px;
 }
 
 .rcl-grouplist .single-group {
@@ -1447,6 +1447,18 @@ div#mentor_tab div#video_mentor iframe{
 	-o-box-sizing: border-box;
 	box-sizing: border-box; 
 	float: right;
+}
+
+.cabinet-wrap {
+	margin: 0px 30px;
+}
+
+#tab-apply_for_campus p {
+	text-align: justify;
+}
+
+#begin-cra {
+	margin-top: 30px;
 }
 
 /* end new changes */
