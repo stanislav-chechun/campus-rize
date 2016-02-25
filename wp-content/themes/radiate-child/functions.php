@@ -207,6 +207,18 @@ function get_student_thumbnail($video_source, $display_author_info){
     
     return $result;
 }
+
+
+function example_dashboard_widget_function(){
+	// Показать то, что вы хотите показать
+	echo "Я — великий виджет админки от Primary Technology";
+}
+// Создаем функцию, используя хук действия
+function example_add_dashboard_widgets() {
+	wp_add_dashboard_widget('example_dashboard_widget', 'Привет, случайный прохожий!', 'example_dashboard_widget_function');
+}
+// Хук в 'wp_dashboard_setup', чтобы зарегистрировать нашу функцию среди других
+add_action('wp_dashboard_setup', 'example_add_dashboard_widgets' );
         //Pavel
 
 

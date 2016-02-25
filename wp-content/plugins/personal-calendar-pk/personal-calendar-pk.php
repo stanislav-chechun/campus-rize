@@ -15,6 +15,7 @@ add_action ( 'show_user_profile', 'pk_show_availability_mentor' );
 add_action ( 'edit_user_profile', 'pk_show_availability_mentor' );
 
 function pk_show_availability_mentor ( $user) {
+    if(is_admin()){
     ?><script type="text/javascript">
         jQuery(document).ready(function($) { 
            
@@ -83,8 +84,8 @@ function pk_show_availability_mentor ( $user) {
 <?php
         }
     }
+    }
 }
-
 add_action('admin_init', 'au_process_activate');
 function au_process_activate() {
     if( isset( $_POST['pk_action'] ) && $_POST['pk_action'] == 'process_pk_date' ) {
