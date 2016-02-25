@@ -141,24 +141,4 @@ jQuery( document ).ready(function() {
         }
     });
 
-    //if (!Modernizr.inputtypes.date) {
-        // If not native HTML5 support, fallback to jQuery datePicker
-          /*  jQuery('input[type=date]').datepicker({
-                // Consistent format with the HTML5 picker
-                    dateFormat : 'yy-mm-dd'
-                },
-                // Localization
-                jQuery.datepicker.regional['it']
-            );*/
-        //}
-
-    jQuery('.datepicker-here').datepicker({ 
-    	dateFormat: "dd-mm-yy", 
-    	defaultDate: "01-01-1990", 
-    	changeYear: true, 
-    	changeMonth: true,
-    	minDate: "-100Y",
-    });
-
-
 });

@@ -7,14 +7,6 @@
 		wp_enqueue_script( 'bootstrap.min.js', get_home_url() . '/wp-content/themes/radiate-child/bootstrap/bootstrap.min.js', array(), false, true );
 		wp_enqueue_script( 'scripts.js', get_home_url() . '/wp-content/themes/radiate-child/js/scripts.js', array(), false, true );
 		//wp_enqueue_script( 'mobile.js', get_template_directory_uri() . '/js/mobile.js', array(), false, true );
-		//wp_enqueue_script('masked-input', get_template_directory_uri().'/js/jquery.maskedinput.min.js', array('jquery'), false, true );
-		wp_enqueue_script('masked-input', get_home_url().'/wp-content/themes/radiate-child/js/jquery.maskedinput.min.js', array('jquery'), false, true );
-		//wp_enqueue_style( 'datepicker.min.css', get_home_url() . '/wp-content/themes/radiate-child/air-datepicker/datepicker.min.css' );
-		//wp_enqueue_script( 'datepicker.min.js', get_home_url() . '/wp-content/themes/radiate-child/air-datepicker/datepicker.min.js', array(), false, true );
-		wp_enqueue_style( 'jquery-ui.min.css', get_home_url() . '/wp-content/themes/radiate-child/datepicker/jquery-ui.min.css' );
-		wp_enqueue_style( 'jquery-ui.structure.min.css', get_home_url() . '/wp-content/themes/radiate-child/datepicker/jquery-ui.structure.min.css' );
-		wp_enqueue_script( 'jquery-ui.min.js', get_home_url() . '/wp-content/themes/radiate-child/datepicker/jquery-ui.min.js', array(), false, true );
-		wp_enqueue_script( 'jquery-ui.theme.min.css', get_home_url() . '/wp-content/themes/radiate-child/datepicker/jquery-ui.theme.min.css', array(), false, true );
 	}
 	add_action( 'wp_enqueue_scripts', 'add_scripts' );
         
@@ -435,18 +427,6 @@ function get_student_thumbnail($video_source, $display_author_info){
 		update_post_meta($postID, 'tm_linkedIn', $tm_linkedIn);
 		update_post_meta($postID, 'tm_facebook', $tm_facebook);
 
-	}
-
-	add_action('wp_footer', 'wpmidia_activate_masked_input');
-	function wpmidia_activate_masked_input(){
-?>
-<script type="text/javascript">
-	jQuery( function($){
-		//$(".data").mask("99/99/9999");
-		$(".phone-with-mask").mask("+99 (999) 999-99-99");
-	});
-</script>
-<?php
 	}
 
 ?>
