@@ -1462,3 +1462,7 @@ div#mentor_tab div#video_mentor iframe{
 }
 
 /* end new changes */
+
+.wprecallblock #lk-content table.form-table{
+	display: none;
+}
