@@ -24,7 +24,7 @@ function meet_mentor_recall_block($user_lk){
         $html .= '<div class="container-fluid" id="mentor_tab">';
         $html .= '<div class="row">';
         
-            $html .= '<div class="col-md-8 col-xs-12" id="video_mentor">';
+            $html .= '<div class="col-md-7 col-xs-12" id="video_mentor">';
                 if($mentor_youtube != ''){
                     $html .= display_youtube_video( $mentor_youtube, $display_author_info);
                 }
@@ -36,9 +36,19 @@ function meet_mentor_recall_block($user_lk){
                 }
             $html .= '</div>';
             
-            $html .= '<div class="col-md-4 col-xs-12" id="text_mentor">';
-                $html .= __('This is your mentor: ');
-                $html .= $mentor_data->display_name;
+            $html .= '<div class="col-md-5 col-xs-12" id="text_mentor">';
+                $html .= '<p><strong>' . __('This is your mentor: ') . '</strong>';
+                $html .= '<i>' . $mentor_data->display_name . '</i></p>';
+                
+                $html .= '<p><strong>' . __('About the mentor: ') . '</strong>';
+                $html .= '<i>' . $mentor_data->description . '</i></p>';
+               
+                $html .= '<p><strong>' . __('Send an email: ') . '</strong>';
+                $html .= '<i>' . $mentor_data->user_email . '</i></p>';
+                
+                //$html .= do_shortcode('[CPABC_APPOINTMENT_CALENDAR calendar="2"]');
+                $html .= do_shortcode('[APCAL]');
+                
             $html .= '</div>';
             
         $html .= '</div>';

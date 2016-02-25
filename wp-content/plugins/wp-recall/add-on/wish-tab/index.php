@@ -52,7 +52,7 @@ function form_donation_block($user_lk){
 //		</div>';
 ////   
 //     
-    $html .= wp_editor( '', 'wishwpeditor', array('textarea_name' => 'content') );
+//    $html .= wp_editor( '', 'wishwpeditor', array('textarea_name' => 'content') );
     $html .= '<form  class="form-horizontal" enctype="multipart/form-data" id="wish_table" method="post">';
                 $html .= '<div class="form-group">';
                         $html .= '<label class="col-sm-4 control-label" for="title_form">' . __( 'The title of your goal*: ') . '</label>';
