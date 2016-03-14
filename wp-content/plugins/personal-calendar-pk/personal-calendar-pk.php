@@ -79,15 +79,15 @@ function pk_show_availability_mentor ( $user) {
             if( $user_data->has_cap('mentor') || $user_data->has_cap('administrator')){
 
                 $array_time = get_user_meta($user->ID, 'avaible_time', true);
-                
-                //sorting an array
-                uksort($array_time, function($a, $b){
-                    if ($a == $b) {
-                            return 0;
-                    }
-                    return ($a < $b) ? -1 : 1;
-                });
-              
+                if( !empty( $array_time)){
+                    //sorting an array
+                    uksort($array_time, function($a, $b){
+                        if ($a == $b) {
+                                return 0;
+                        }
+                        return ($a < $b) ? -1 : 1;
+                    });
+                }
                 ?>
         <hr size="6" color = "green" >
         <h2 style="text-align:center"><?php _e( 'This is the area of the plugin\'s "Personal Calendar"!!!');?></h2>
@@ -95,25 +95,35 @@ function pk_show_availability_mentor ( $user) {
         <h3><?php _e( 'There are an availability for that mentor');?></h3><div id="results"></div>
         
         <table id="time_exist" class="table_exist">
-            <?php 
-            foreach( $array_time as $date => $time){
+            <?php //  echo '<pre>';var_dump($array_time);echo '</pre>';
+            if( !empty( $array_time)){
+                foreach( $array_time as $date => $time){
                 ?>  <tr id="<?php echo $date; ?>">
                         <td><input type="button" name="<?php echo $date; ?>" value="Delete day" class="remove_day"></input></td>
                         <td><strong><?php echo $date; ?></strong></td>
                         <td>
-                        <?php foreach($time as $time_item){ ?>
-
-                            <?php echo $time_item . '; '; ?>
-                        <?php } ?>
+                        <?php foreach($time as $time_item){ 
+  
+                            if( ! empty( $time_item[0]) && ! empty( $time_item[1] )){
+                                echo $time_item[0] . ' - ' . $time_item[1] . '; ';
+                            }
+               
+                            elseif( ! empty( $time_item[0]) || ! empty($time_item[1] )){
+                                echo $time_item[0] . $time_item[1] . '; ';
+                            } 
+              
+                        } ?>
                         </td>
                     </tr>
                     
-            <?php } ?>
+            <?php }
+            } 
+            ?>
       
         </table>
              
                 <h3><?php _e( 'Add an availability for that mentor');?></h3>
-       <?php echo USER_UPDATE; ?>
+      
                     <table id="time_table" class="form-table">
                         <tr><td><?php _e('Date'); ?> </td><td><input type="text" name="<?php _e('0');?>" class="datepicker" ></td></tr>
 
@@ -137,6 +147,7 @@ function pk_show_availability_mentor ( $user) {
         }
     }
 }
+
 add_action('admin_init', 'pk_process_activate');
 function pk_process_activate() {
     if( isset( $_POST['pk_action'] ) && $_POST['pk_action'] == 'process_pk_date' ) {
@@ -160,17 +171,23 @@ function pk_process_activate() {
                         
                        // $array_time[$_POST[$i]][] = $_POST[$i . $z . $k . '1'] . ' - ' . $_POST[$i . $z . $k . '2'];
                         
-                        if( ! empty( $_POST[$i . $z . $k . '1']) && ! empty( $_POST[$i . $z . $k . '2'] )){
-                            $array_time[$_POST[$i]][] = $_POST[$i . $z . $k . '1'] . ' - ' . $_POST[$i . $z . $k . '2'];
+                        if( ! empty( $_POST[$i . $z . $k . '1']) || ! empty( $_POST[$i . $z . $k . '2'] )){
+                            $item_array = [];
+                            $array_time[$_POST[$i]][] =  array($_POST[$i . $z . $k . '1'],$_POST[$i . $z . $k . '2']) ;
+                            
                         }
-                    
-                        elseif( ! empty( $_POST[$i . $z . $k . '1']) && empty( $_POST[$i . $z . $k . '2'] )){
-                            $array_time[$_POST[$i]][] = $_POST[$i . $z . $k . '1'];
-                        }
-                    
-                        elseif( empty( $_POST[$i . $z . $k . '1']) && !empty( $_POST[$i . $z . $k . '2'] )){
-                            $array_time[$_POST[$i]][] = $_POST[$i . $z . $k . '2'];
-                        }
+                    // This is for format day(time11-time12)
+//                         if( ! empty( $_POST[$i . $z . $k . '1']) && ! empty( $_POST[$i . $z . $k . '2'] )){
+//                            $array_time[$_POST[$i]][] = $_POST[$i . $z . $k . '1'] . ' - ' . $_POST[$i . $z . $k . '2'];
+//                        }
+//                    
+//                        elseif( ! empty( $_POST[$i . $z . $k . '1']) && empty( $_POST[$i . $z . $k . '2'] )){
+//                            $array_time[$_POST[$i]][] = $_POST[$i . $z . $k . '1'];
+//                        }
+//                    
+//                        elseif( empty( $_POST[$i . $z . $k . '1']) && !empty( $_POST[$i . $z . $k . '2'] )){
+//                            $array_time[$_POST[$i]][] = $_POST[$i . $z . $k . '2'];
+//                        }
                         
                     }
                    
@@ -180,9 +197,15 @@ function pk_process_activate() {
                 
             }
       
-            //echo '<pre>';var_dump($array_time);echo '</pre>';
+//           echo '<pre>';var_dump($array_time);echo '</pre>';
+        
         $old_array_time = get_user_meta($user_id, 'avaible_time', true); 
-        $new_array_time = $old_array_time + $array_time; 
+        if(!empty($old_array_time)){
+            $new_array_time = $old_array_time + $array_time; 
+        } else{
+             $new_array_time = $array_time;
+        }   
+        
         $result_time = update_user_meta( $user_id, 'avaible_time', $new_array_time );
         
         
